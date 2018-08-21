@@ -1,0 +1,125 @@
+Arguments: 
+  /usr/local/bin/node /Users/gzit000545 1/.yarn/bin/yarn.js install
+
+PATH: 
+  /Users/gzit000545 1/.yarn/bin:/Users/gzit000545 1/.yarn/bin:/Users/gzit000545 1/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/gzit000545 1/go/bin
+
+Yarn version: 
+  1.6.0-20180327.1507
+
+Node version: 
+  9.11.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: /Users/gzit000545 1/Documents/shawb-wong/node_modules/sharp: Command failed.
+  Exit code: 1
+  Command: (node install/libvips && node install/dll-copy && prebuild-install) || (node-gyp rebuild && node install/dll-copy)
+  Arguments: 
+  Directory: /Users/gzit000545 1/Documents/shawb-wong/node_modules/sharp
+  Output:
+  info sharp Using cached /Users/gzit000545 1/.npm/_libvips/libvips-8.6.1-darwin-x64.tar.gz
+  prebuild-install WARN install No prebuilt binaries found (target=9.11.1 runtime=node arch=x64 platform=darwin)
+  gyp info it worked if it ends with ok
+  gyp info using node-gyp@3.6.2
+  gyp info using node@9.11.1 | darwin | x64
+  gyp info spawn /usr/bin/python
+  gyp info spawn args [ '/usr/local/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
+  gyp info spawn args   'binding.gyp',
+  gyp info spawn args   '-f',
+  gyp info spawn args   'make',
+  gyp info spawn args   '-I',
+  gyp info spawn args   '/Users/gzit000545 1/Documents/shawb-wong/node_modules/sharp/build/config.gypi',
+  gyp info spawn args   '-I',
+  gyp info spawn args   '/usr/local/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
+  gyp info spawn args   '-I',
+  gyp info spawn args   '/Users/gzit000545 1/.node-gyp/9.11.1/include/node/common.gypi',
+  gyp info spawn args   '-Dlibrary=shared_library',
+  gyp info spawn args   '-Dvisibility=default',
+  gyp info spawn args   '-Dnode_root_dir=/Users/gzit000545 1/.node-gyp/9.11.1',
+  gyp info spawn args   '-Dnode_gyp_dir=/usr/local/lib/node_modules/npm/node_modules/node-gyp',
+  gyp info spawn args   '-Dnode_lib_file=/Users/gzit000545 1/.node-gyp/9.11.1/<(target_arch)/node.lib',
+  gyp info spawn args   '-Dmodule_root_dir=/Users/gzit000545 1/Documents/shawb-wong/node_modules/sharp',
+  gyp info spawn args   '-Dnode_engine=v8',
+  gyp info spawn args   '--depth=.',
+  gyp info spawn args   '--no-parallel',
+  gyp info spawn args   '--generator-output',
+  gyp info spawn args   'build',
+  gyp info spawn args   '-Goutput_dir=.' ]
+  gyp info spawn make
+  gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+    TOUCH Release/obj.target/libvips-cpp.stamp
+    CXX(target) Release/obj.target/sharp/src/common.o
+  clang: error: no such file or directory: '1/.node-gyp/9.11.1/include/node'
+  clang: error: no such file or directory: '1/.node-gyp/9.11.1/src'
+  clang: error: no such file or directory: '1/.node-gyp/9.11.1/deps/uv/include'
+  clang: error: no such file or directory: '1/.node-gyp/9.11.1/deps/v8/include'
+  make: *** [Release/obj.target/sharp/src/common.o] Error 1
+  gyp ERR! build error 
+  gyp ERR! stack Error: `make` failed with exit code: 2
+  gyp ERR! stack     at ChildProcess.onExit (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:258:23)
+  gyp ERR! stack     at ChildProcess.emit (events.js:180:13)
+  gyp ERR! stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:12)
+  gyp ERR! System Darwin 17.7.0
+  gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+  gyp ERR! cwd /Users/gzit000545 1/Documents/shawb-wong/node_modules/sharp
+  gyp ERR! node -v v9.11.1
+  gyp ERR! node-gyp -v v3.6.2
+  gyp ERR! not ok
+      at ProcessTermError.MessageError (/Users/gzit000545 1/.yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/Users/gzit000545 1/.yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/Users/gzit000545 1/.yarn/lib/cli.js:30278:17)
+      at ChildProcess.emit (events.js:180:13)
+      at maybeClose (internal/child_process.js:936:16)
+      at Socket.stream.socket.on (internal/child_process.js:353:11)
+      at Socket.emit (events.js:180:13)
+      at Pipe._handle.close [as _onclose] (net.js:541:12)
+
+npm manifest: 
+  {
+    "name": "gatsby-starter-forty",
+    "description": "Gatsby Starter - Forty by HTML5 UP",
+    "version": "1.0.0",
+    "author": "Hunter Chang",
+    "dependencies": {
+      "gatsby": "^1.9.235",
+      "gatsby-link": "^1.6.39",
+      "gatsby-image": "^1.0.42",
+      "gatsby-plugin-google-analytics": "^1.0.24",
+      "gatsby-plugin-react-helmet": "^1.0.8",
+      "gatsby-plugin-sass": "^1.0.23",
+      "gatsby-plugin-sharp": "^1.6.41",
+      "gatsby-remark-copy-linked-files": "^1.5.30",
+      "gatsby-remark-images": "^1.5.56",
+      "gatsby-source-filesystem": "^1.5.27",
+      "gatsby-transformer-remark": "^1.7.37",
+      "gatsby-transformer-sharp": "^1.6.22",
+      "lodash": "^4.17.4"
+    },
+    "homepage": "https://github.com/ChangoMan/gatsby-starter-forty",
+    "keywords": [
+      "gatsby"
+    ],
+    "license": "MIT",
+    "main": "n/a",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/ChangoMan/gatsby-starter-forty.git"
+    },
+    "scripts": {
+      "dev": "gatsby develop",
+      "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "develop": "gatsby develop",
+      "build": "gatsby build",
+      "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
