@@ -38,7 +38,6 @@ class Template extends React.Component {
 
     render() {
         const { children } = this.props
-
         return (
             <div className={`body ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
                 <Helmet>
@@ -61,3 +60,20 @@ Template.propTypes = {
 }
 
 export default Template
+
+// export const pageQuery = graphql`
+//   query LayoutQuery {
+//     allMarkdownRemark(limit: 1000) {
+//         edges {
+//         node {
+//             frontmatter {
+//             path
+//             title
+//             date(formatString: "MMMM DD, YYYY")
+//             }
+//         }
+//     }
+//     }
+//   }
+// `
+

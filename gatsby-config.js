@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Starter - Forty by HTML5 UP",
-    author: "Hunter Chang",
-    description: "A Gatsby.js Starter based on Forty by HTML5 UP"
+    title: "王晓博 - 银河系漫游指南",
+    author: "Shawb Wong",
+    description: "如果这个博客好久不更新了,说明我更浑浑噩噩了"
   },
   pathPrefix: '/',
   plugins: [

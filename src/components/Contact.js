@@ -1,10 +1,12 @@
 import React from 'react'
+import Gitment from './Gitment'
 
 const Contact = (props) => (
     <section id="contact">
         <div className="inner">
             <section>
-                <form method="post" action="#">
+                <Gitment />
+                {/* <form method="post" action="#">
                     <div className="field half first">
                         <label htmlFor="name">Name</label>
                         <input type="text" name="name" id="name" />
@@ -21,7 +23,7 @@ const Contact = (props) => (
                         <li><input type="submit" value="Send Message" className="special" /></li>
                         <li><input type="reset" value="Clear" /></li>
                     </ul>
-                </form>
+                </form> */}
             </section>
             <section className="split">
                 <section>
