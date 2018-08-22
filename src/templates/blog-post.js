@@ -5,10 +5,8 @@ import get from 'lodash/get'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this.props)
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    console.log(post)
     return (
       <div>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
