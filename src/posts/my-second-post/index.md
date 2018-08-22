@@ -2,7 +2,7 @@
 title: My Second Post!
 date: "2015-05-06T23:46:37.121Z"
 path: "/my-second-post/"
-desc: 3
+thumbnail: "http://www.quimg.com/common%2Fimg%2Fguide%2F2015-03%2Fjinmendaqiao-2015-03-14172535895.jpg"
 ---
 
 Wow! I love blogging so much already.

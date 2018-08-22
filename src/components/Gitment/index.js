@@ -6,7 +6,7 @@ export default class GitmentComp extends React.Component {
   componentDidMount() {
     this.gitment = new Gitment({
       id: window.location.pathname,
-      owner: 'Laughing Jacky',
+      owner: 'LaughingJacky',
       repo: 'gitment',
       oauth: {
         client_id: '7d15c5c496b35e601dae',

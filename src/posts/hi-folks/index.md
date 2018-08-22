@@ -2,7 +2,7 @@
 title: New Beginnings
 date: "2015-05-28T22:40:32.169Z"
 path: "/hi-folks/"
-desc: 2
+thumbnail: "http://www.quimg.com/common%2Fimg%2Fguide%2F2015-03%2Fjinmendaqiao-2015-03-14172535895.jpg"
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia

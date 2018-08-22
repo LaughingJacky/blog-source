@@ -5,13 +5,14 @@ import get from 'lodash/get'
 
 class BlogPostTemplate extends React.Component {
   render() {
+    console.log(this.props)
     const post = this.props.data.markdownRemark
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
+    console.log(post)
     return (
       <div>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
+        <h1>{post.frontmatter.title}{post.frontmatter.desc}</h1>
         <p>
           {post.frontmatter.date}
         </p>
@@ -38,6 +39,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        thumbnail
       }
     }
   }

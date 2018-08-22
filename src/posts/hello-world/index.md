@@ -2,6 +2,7 @@
 title: Hello World
 date: "2015-05-01T22:12:03.284Z"
 path: "/hello-world/"
+thumbnail: "http://www.quimg.com/common%2Fimg%2Fguide%2F2015-03%2Fjinmendaqiao-2015-03-14172535895.jpg"
 ---
 
 This is my first post on my new fake blog! How exciting!
