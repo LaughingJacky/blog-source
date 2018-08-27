@@ -20,24 +20,24 @@ const BlogList = (props) => (
                         <h1>Generic</h1>
                     </header>
                     {
-                        props.data.allMarkdownRemark.edges.map((e, i) => {
-                            console.log(e)
-                            const article = e.node.frontmatter
+                        props.data.allContentfulBlogPost.edges.map(({node}, i) => {
+                            const {slug, description, heroImage, tags, publishDate} = node
+                            console.log(node)
                             return (
                                 <section id="two" className="spotlights" key={i}>
                                     {
                                         i % 2 === 0 ? <section>
-                                        <Link to={e.node.frontmatter.path} className="image">
-                                            <img src={article.thumbnail} alt="" />
+                                        <Link to={`/blog/${slug}`} className="image">
+                                            <img src={heroImage.sizes.srcWebp} alt="" />
                                         </Link>
                                         <div className="content">
                                             <div className="inner">
                                                 <header className="major">
-                                                    <h3>{e.node.frontmatter.title}</h3>
+                                                    <h3>{node.title}</h3>
                                                 </header>
                                                 <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
                                                 <ul className="actions">
-                                                    <li><Link to={e.node.frontmatter.path} className="button">Learn more</Link></li>
+                                                    <li><Link to={`/blog/${slug}`} className="button">Learn more</Link></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -45,16 +45,16 @@ const BlogList = (props) => (
                                         <div className="content">
                                                 <div className="inner">
                                                     <header className="major">
-                                                        <h3>{e.node.frontmatter.title}</h3>
+                                                        <h3>{node.title}</h3>
                                                     </header>
                                                     <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
                                                     <ul className="actions">
-                                                        <li><Link to={e.node.frontmatter.path} className="button">Learn more</Link></li>
+                                                        <li><Link to={`/blog/${slug}`} className="button">Learn more</Link></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <Link to={e.node.frontmatter.path} className="image">
-                                                <img src={article.thumbnail} alt="" />
+                                            <Link to={`/blog/${slug}`} className="image">
+                                                <img src={heroImage.sizes.srcWebp} alt="" />
                                             </Link>
                                         </section>
                                     }
@@ -73,19 +73,26 @@ const BlogList = (props) => (
 export default BlogList
 
 export const pageQuery = graphql`
-  query LayoutQuery {
-    allMarkdownRemark(limit: 1000) {
-        edges {
-            node {
-                tableOfContents
-                frontmatter {
-                path
-                title
-                date(formatString: "MMMM DD, YYYY")
-                thumbnail
-                }
+query BlogIndexQuery {
+    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+      edges {
+        node {
+          title
+          slug
+          publishDate(formatString: "MMMM Do, YYYY")
+          tags
+          heroImage {
+            sizes(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+              ...GatsbyContentfulSizes_withWebp
             }
+          }
+          description {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
+      }
     }
   }
 `

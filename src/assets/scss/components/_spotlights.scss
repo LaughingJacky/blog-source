@@ -16,6 +16,7 @@
 		> section {
 			@include vendor('display', 'flex');
 			@include vendor('flex-direction', 'row');
+			@include padding(1em, 0);
 			background-color: desaturate(lighten(_palette(bg-alt), 2), 1);
 
 			> .image {
@@ -50,7 +51,7 @@
 				@include vendor('flex-direction', 'column');
 				@include vendor('justify-content', 'center');
 				@include vendor('align-items', 'center');
-				@include padding(2em, 3em);
+				@include padding(0, 3em);
 				width: 70%;
 
 				> .inner {

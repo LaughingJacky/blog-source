@@ -1,3 +1,24 @@
+let contentfulConfig
+
+try {
+  // Load the Contentful config from the .contentful.json
+  contentfulConfig = require('./.contentful')
+} catch (_) {}
+
+// Overwrite the Contentful config with environment variables if they exist
+contentfulConfig = {
+  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+}
+
+const { spaceId, accessToken } = contentfulConfig
+
+if (!spaceId || !accessToken) {
+  throw new Error(
+    'Contentful spaceId and the delivery token need to be provided.'
+  )
+}
+
 module.exports = {
   siteMetadata: {
     title: "王晓博 - 银河系漫游指南",
@@ -5,38 +26,15 @@ module.exports = {
     description: "如果这个博客好久不更新了,说明我更浑浑噩噩了"
   },
   pathPrefix: '/',
+  // pathPrefix: '/shawb-wong',
   plugins: [
+    'gatsby-transformer-remark',
+    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-sass`,
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/posts`,
-        name: "posts",
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [ 
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 630,
-            },
-          },
-          "gatsby-remark-copy-linked-files",
-        ],
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`
+      resolve: 'gatsby-source-contentful',
+      options: contentfulConfig,
+    }
   ],
 }

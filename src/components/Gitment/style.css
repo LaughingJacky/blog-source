@@ -73,6 +73,7 @@
 .gitment-header-like-btn svg {
   vertical-align: middle;
   height: 30px;
+  fill: #fff;
 }
 
 .gitment-comment-like-btn svg {
@@ -236,7 +237,7 @@ a.gitment-footer-project-link,
 a.gitment-footer-project-link:visited,
 a.gitment-editor-login-link,
 a.gitment-editor-login-link:visited {
-  color: #2196F3;
+  color: rgba(244, 244, 255, 0.2);
 }
 
 a.gitment-editor-logout-link,
@@ -446,7 +447,7 @@ a.gitment-editor-footer-tip:hover {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: #333;
+  color: rgb(158, 58, 135);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   line-height: 1.5;

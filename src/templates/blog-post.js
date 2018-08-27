@@ -3,20 +3,20 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 
+import './blog-post.scss'
+
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this.props)
-    const post = this.props.data.markdownRemark
+    const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    console.log(post)
     return (
-      <div>
-        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}{post.frontmatter.desc}</h1>
+      <div className="blog-post">
+        <Helmet title={`${post.title} | ${siteTitle}`} />
+        <h1 className="post-title">{post.title}</h1>
         <p>
-          {post.frontmatter.date}
+          {post.publishDate}
         </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className="container" dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
         <hr/>
       </div>
     )
@@ -26,20 +26,19 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    site {
-      siteMetadata {
-        title
-        author
+  query BlogPostBySlug($slug: String!) {
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      publishDate(formatString: "MMMM Do, YYYY")
+      heroImage {
+        sizes(maxWidth: 1180, background: "rgb:000000") {
+          ...GatsbyContentfulSizes_withWebp
+        }
       }
-    }
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      id
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        thumbnail
+      body {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
