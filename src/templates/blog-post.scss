@@ -1,3 +1,13 @@
+#gitalk-container {
+  margin: 0 auto;
+  padding: 0 4em;
+  .gt-header-textarea {
+    color: _palette(bg);
+  }
+  .gt-avatar-github {
+    border-bottom: none;
+  }
+}
 .blog-post {
   .post-title {
     margin-bottom: .5em;
