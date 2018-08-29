@@ -90,21 +90,6 @@
 		}
 	}
 
-/* Contact */
-
-	#contact {
-		&:after {
-			content: '';
-			display: block;
-			clear: both;
-		}
-
-		> .inner {
-			> * {
-				float: left;
-			}
-		}
-	}
 
 /* Menu */
 

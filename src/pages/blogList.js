@@ -2,13 +2,10 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-import pic11 from '../assets/images/pic11.jpg'
-import pic08 from '../assets/images/pic08.jpg'
-import pic09 from '../assets/images/pic09.jpg'
 const BlogList = (props) => (
     <div>
         <Helmet>
-            <title>博客列表 - Forty by HTML5 UP</title>
+            <title>博客列表</title>
             <meta name="description" content="Generic Page" />
         </Helmet>
 
@@ -17,7 +14,7 @@ const BlogList = (props) => (
             <section id="one">
                 <div className="inner">
                     <header className="major">
-                        <h1>Generic</h1>
+                        <h1>博客列表</h1>
                     </header>
                     {
                         props.data.allContentfulBlogPost.edges.map(({node}, i) => {
@@ -63,7 +60,6 @@ const BlogList = (props) => (
 
                         })
                     }
-                    <span className="image main"><img src={pic11} alt="" /></span>
                 </div>
             </section>
         </div>

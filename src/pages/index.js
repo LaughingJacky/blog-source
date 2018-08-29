@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
-import Banner from '../components/Banner'
+import 'gitalk/dist/gitalk.css'
 
+import Banner from '../components/Banner'
 import pic01 from '../assets/images/pic01.jpg'
 import pic02 from '../assets/images/pic02.jpg'
 import pic03 from '../assets/images/pic03.jpg'
@@ -10,7 +11,23 @@ import pic04 from '../assets/images/pic04.jpg'
 import pic05 from '../assets/images/pic05.jpg'
 import pic06 from '../assets/images/pic06.jpg'
 
+// Prevent webpack window problem
+const isBrowser = typeof window !== 'undefined'
+const Gitalk = isBrowser ? require('gitalk') : undefined
+
 class HomeIndex extends React.Component {
+    componentDidMount() {
+        // Gitalk
+        const gitalk = new Gitalk({
+            clientID: '7d15c5c496b35e601dae',
+            clientSecret: '25fb2be35286f43cd6e59167fcd2b98c2dc5500f',
+            repo: 'Gitment',
+            owner: 'LaughingJacky',
+            admin: ['LaughingJacky'],
+            distractionFreeMode: true,
+        });
+        gitalk.render('gitalk-container');
+    }
     render() {
         const siteTitle = this.props.data.site.siteMetadata.title
         const siteDescription = this.props.data.site.siteMetadata.description
@@ -81,7 +98,7 @@ class HomeIndex extends React.Component {
                         </div>
                     </section>
                 </div>
-
+                <div id="gitalk-container"></div>
             </div>
         )
     }

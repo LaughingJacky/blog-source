@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-forty",
+  "name": "shawb-wong",
   "description": "Just my thoughts",
   "version": "1.0.0",
   "author": "Shawb Wong",
@@ -17,8 +17,10 @@
     "gatsby-source-filesystem": "^1.5.27",
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^1.6.22",
-    "gitment": "^0.0.3",
-    "lodash": "^4.17.10"
+    "gitalk": "^1.4.0",
+    "lodash": "^4.17.10",
+    "md5": "^2.2.1",
+    "moment": "^2.22.2"
   },
   "homepage": "https://github.com/LaughingJacky/gatsby-source",
   "keywords": [
@@ -28,7 +30,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChangoMan/gatsby-starter-forty.git"
+    "url": "https://github.com/LaughingJacky/gatsby-source.git"
   },
   "scripts": {
     "dev": "gatsby develop",

@@ -6,14 +6,14 @@ const Menu = (props) => (
         <div className="inner">
             <ul className="links">
                 <li><Link onClick={props.onToggleMenu} to="/">Home</Link></li>
-                <li><Link onClick={props.onToggleMenu} to="/landing">Landing</Link></li>
+                <li><Link onClick={props.onToggleMenu} to="/tags">Tags</Link></li>
                 <li><Link onClick={props.onToggleMenu} to="/blogList">BlogList</Link></li>
-                <li><Link onClick={props.onToggleMenu} to="/elements">Elements</Link></li>
+                <li><Link onClick={props.onToggleMenu} to="/elements">About</Link></li>
             </ul>
-            <ul className="actions vertical">
+            {/* <ul className="actions vertical">
                 <li><a href="#" className="button special fit">Get Started</a></li>
                 <li><a href="#" className="button fit">Log In</a></li>
-            </ul>
+            </ul> */}
         </div>
         <a className="close" onClick={props.onToggleMenu} href="javascript:;">Close</a>
     </nav>
