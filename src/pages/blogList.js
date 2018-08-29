@@ -19,7 +19,6 @@ const BlogList = (props) => (
                     {
                         props.data.allContentfulBlogPost.edges.map(({node}, i) => {
                             const {slug, description, heroImage, tags, publishDate} = node
-                            console.log(node)
                             return (
                                 <section id="two" className="spotlights" key={i}>
                                     {
