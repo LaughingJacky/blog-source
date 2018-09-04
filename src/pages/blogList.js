@@ -18,20 +18,20 @@ const BlogList = (props) => (
                     </header>
                     {
                         props.data.allContentfulBlogPost.edges.map(({node}, i) => {
-                            const {slug, description, heroImage, tags, publishDate} = node
+                            const {slug, description, headImg, tags, publishDate} = node
                             return (
                                 <section id="two" className="spotlights" key={i}>
                                     {
                                         i % 2 === 0 ? <section>
                                         <Link to={`/blog/${slug}`} className="image">
-                                            <img src={heroImage.sizes.srcWebp} alt="" />
+                                            <img src={headImg} alt="" />
                                         </Link>
                                         <div className="content">
                                             <div className="inner">
                                                 <header className="major">
                                                     <h3>{node.title}</h3>
                                                 </header>
-                                                <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+                                                <p>{description}</p>
                                                 <ul className="actions">
                                                     <li><Link to={`/blog/${slug}`} className="button">Learn more</Link></li>
                                                 </ul>
@@ -50,7 +50,7 @@ const BlogList = (props) => (
                                                 </div>
                                             </div>
                                             <Link to={`/blog/${slug}`} className="image">
-                                                <img src={heroImage.sizes.srcWebp} alt="" />
+                                                <img src={headImg} alt="" />
                                             </Link>
                                         </section>
                                     }
@@ -68,7 +68,7 @@ const BlogList = (props) => (
 export default BlogList
 
 export const pageQuery = graphql`
-query BlogIndexQuery {
+  query BlogIndexQuery {
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
@@ -76,16 +76,8 @@ query BlogIndexQuery {
           slug
           publishDate(formatString: "MMMM Do, YYYY")
           tags
-          heroImage {
-            sizes(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulSizes_withWebp
-            }
-          }
-          description {
-            childMarkdownRemark {
-              html
-            }
-          }
+          headImg
+          description
         }
       }
     }

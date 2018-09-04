@@ -31,10 +31,26 @@ module.exports = {
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-sass`,
-    'gatsby-plugin-sharp',
+    // 'gatsby-plugin-sharp',
+    // {
+    //   resolve: 'gatsby-source-contentful',
+    //   options: contentfulConfig,
+    // },
     {
-      resolve: 'gatsby-source-contentful',
-      options: contentfulConfig,
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: "Shawb's Blog",
+        short_name: 'Shawb',
+        start_url: '/',
+        background_color: '#ededed',
+        theme_color: '#384f7c',
+        display: 'standalone',
+        icons: [{
+          src: '/favicons/Mikoto-145*145.png',
+          sizes: '192x192',
+          type: 'image/png'
+        }]
+      }
     }
   ],
 }

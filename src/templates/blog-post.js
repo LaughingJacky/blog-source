@@ -6,6 +6,9 @@ import { getPath } from '../api/'
 import md5 from 'md5'
 import moment from 'moment'
 
+import Tag from '../components/Tag'
+import TableOfContent from '../components/TableOfContent';
+
 // Prevent webpack window problem
 const isBrowser = typeof window !== 'undefined';
 const Gitalk = isBrowser ? require('gitalk') : undefined;
@@ -16,7 +19,7 @@ class BlogPostTemplate extends React.Component {
     const issueDate = '2018-08-29'
     let id = getPath()
     let title = document ? document.title : ''
-    if (moment(content.publishDate).isAfter(issueDate)) {
+    if (moment(content.createDate).isAfter(issueDate)) {
       title = `${content.title} | Shawb's Blog`
       id = md5(content.title)
     }
@@ -35,21 +38,32 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.content')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const { tags, publishDate, title, description, html, headImg } = post
     return (
       <div className="blog-post">
         <Helmet title={`${post.title} | ${siteTitle}`} />
-        <section id="banner">
+        <section id="banner" style={{
+            backgroundImage: `url(${headImg})`,
+        }}>
           <div className="inner">
             <header className="major">
-              <h1>{post.title}</h1>
+              <h1>{title}</h1>
+              <p className="date">{publishDate}</p>
             </header>
             <div className="content">
-              <div dangerouslySetInnerHTML={{ __html: post.description.childMarkdownRemark.html }} />
-              <p className="tag">{post.publishDate}</p>
+              <p>{description}</p>
+              <div className="tags">
+                {
+                  tags && tags.map(tag => <Tag name={tag} key={tag} />)
+                }
+              </div>
             </div>
           </div>
         </section>
-        <div className="container" dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
+        <div className="container">
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+          {/* <TableOfContent toc={toc} /> */}
+        </div>
         <hr/>
         <div id="gitalk-container" />
       </div>
@@ -65,21 +79,9 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "MMMM Do, YYYY")
       tags
-      description {
-        childMarkdownRemark {
-          html
-        }
-      }
-      heroImage {
-        sizes(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulSizes_withWebp
-        }
-      }
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
+      description
+      headImg
+      html
     }
   }
 `

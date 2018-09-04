@@ -7,3 +7,5 @@ export {
   isBrowser,
   getPath,
 };
+
+export * from './text'
