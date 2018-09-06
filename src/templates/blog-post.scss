@@ -63,8 +63,12 @@
     margin-bottom: .5em;
   }
   .container {
+    display: flex;
     padding-top: 1em;
     margin: 0 2em;
+    .main {
+      width: 80%;
+    }
   }
 }
 /* Banner */

@@ -38,7 +38,7 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.content')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const { tags, publishDate, title, description, html, headImg } = post
+    const { tags, publishDate, title, description, html, headImg, toc } = post
     return (
       <div className="blog-post">
         <Helmet title={`${post.title} | ${siteTitle}`} />
@@ -61,8 +61,8 @@ class BlogPostTemplate extends React.Component {
           </div>
         </section>
         <div className="container">
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-          {/* <TableOfContent toc={toc} /> */}
+          <div className="main" dangerouslySetInnerHTML={{ __html: html }} />
+          <TableOfContent toc={toc} />
         </div>
         <hr/>
         <div id="gitalk-container" />
@@ -79,6 +79,7 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "MMMM Do, YYYY")
       tags
+      toc
       description
       headImg
       html

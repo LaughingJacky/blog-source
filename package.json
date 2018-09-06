@@ -22,7 +22,8 @@
     "lodash": "^4.17.10",
     "md5": "^2.2.1",
     "moment": "^2.22.2",
-    "remarkable": "^1.7.1"
+    "remarkable": "^1.7.1",
+    "smooth-scroll": "^14.2.1"
   },
   "homepage": "https://github.com/LaughingJacky/gatsby-source",
   "keywords": [

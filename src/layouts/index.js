@@ -5,6 +5,13 @@ import Header from '../components/Header'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
 
+if (typeof window !== 'undefined') {
+    // Make scroll behavior of internal links smooth
+    require('smooth-scroll')('a[href*="#"]', {
+      offset: 60,
+    });
+  }
+
 class Template extends React.Component {
 
     constructor(props) {

@@ -1,14 +1,16 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import { menuList } from '../cfg'
 
 const Menu = (props) => (
     <nav id="menu">
         <div className="inner">
             <ul className="links">
-                <li><Link onClick={props.onToggleMenu} to="/">Home</Link></li>
-                <li><Link onClick={props.onToggleMenu} to="/tags">Tags</Link></li>
-                <li><Link onClick={props.onToggleMenu} to="/blogList">BlogList</Link></li>
-                <li><Link onClick={props.onToggleMenu} to="/elements">About</Link></li>
+                {
+                    menuList.map(item => (
+                        <li><Link onClick={props.onToggleMenu} to={item.href}>{item.text}</Link></li>
+                    ))
+                }
             </ul>
             {/* <ul className="actions vertical">
                 <li><a href="#" className="button special fit">Get Started</a></li>
