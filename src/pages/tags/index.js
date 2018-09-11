@@ -13,28 +13,26 @@ const Item = ({ url = '', title = '', publishDate = '' }) => (
 
 const TagBlock = ({
   tag = 'tag', articles = [], isActive = false,
-}) => {
-  console.log(isActive)
-  return (
-    <div className="tag-block" id={tag}>
-      <h3 style={{
-        color: isActive ? '#77d7b9' : '#999'
-      }}>{tag}:</h3>
-      <ol>
-      {
-        articles.map(a => (
-          <Item
-            url={a.url}
-            title={a.title}
-            publishDate={a.publishDate}
-            key={a.title}
-          />
-        ))
-      }
-      </ol>
-    </div>
-  )
-}
+}) => (
+  <div className="tag-block" id={tag}>
+    <h3 style={{
+      color: isActive ? '#77d7b9' : '#999'
+    }}>{tag}:</h3>
+    <ol>
+    {
+      articles.map(a => (
+        <Item
+          url={a.url}
+          title={a.title}
+          publishDate={a.publishDate}
+          key={a.title}
+        />
+      ))
+    }
+    </ol>
+  </div>
+)
+
 
 class TagPage extends Component {
   constructor(props) {
@@ -88,15 +86,13 @@ class TagPage extends Component {
         </section>
         <div className="content">
           {
-            tags.map(t => {
-              console.log(this.props.location.hash)
-              return <TagBlock
+            tags.map(t => <TagBlock
                 tag={t}
                 articles={tCfy[t].filter((v, i, a) => a.indexOf(v) === i)}
                 isActive={decodeURI(this.props.location.hash) === `#${t}`}
                 key={t}
               />
-            })
+            )
           }
         </div>
       </div>
