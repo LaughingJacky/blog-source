@@ -8,7 +8,7 @@ const Menu = (props) => (
             <ul className="links">
                 {
                     menuList.map(item => (
-                        <li><Link onClick={props.onToggleMenu} to={item.href}>{item.text}</Link></li>
+                        <li key={item.text}><Link onClick={props.onToggleMenu} to={item.href}>{item.text}</Link></li>
                     ))
                 }
             </ul>

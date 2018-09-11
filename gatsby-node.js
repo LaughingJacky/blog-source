@@ -71,7 +71,28 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
   await makeBlogNode({ contentType: 'blogPost', createNode });
   // Make changable headers
 };
-
+exports.modifyWebpackConfig = ({ config, stage }) => {
+  if (stage === 'build-html') {
+    config.loader('null', {
+      test: /bad-module/,
+      loader: 'null-loader',
+    });
+  }
+  // if (stage === 'build-javascript') {
+  //   config.plugin(
+  //     'remove-hljs-lang', webpack.ContextReplacementPlugin,
+  //     [
+  //       /highlight\.js\/lib\/languages$/,
+  //       new RegExp(`^./(${['javascript', 'python', 'bash'].join('|')})$`),
+  //     ],
+  //   );
+  //   config.plugin('ignore-moment-locale', webpack.IgnorePlugin, [/^\.\/locale$/, [/moment$/]]);
+  // }
+};
+// exports.modifyBabelrc = ({ babelrc }) => ({
+//   ...babelrc,
+//   plugins: babelrc.plugins.concat(['transform-decorators-legacy', 'transform-regenerator', 'transform-runtime']),
+// });
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators;

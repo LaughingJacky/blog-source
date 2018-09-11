@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import Head from './Head'
 import '../assets/scss/main.scss'
 import Header from '../components/Header'
@@ -57,25 +58,9 @@ class Template extends React.Component {
     }
 }
 
+
 Template.propTypes = {
-    children: React.PropTypes.func
+    children: PropTypes.func
 }
 
 export default Template
-
-// export const pageQuery = graphql`
-//   query LayoutQuery {
-//     allMarkdownRemark(limit: 1000) {
-//         edges {
-//         node {
-//             frontmatter {
-//             path
-//             title
-//             date(formatString: "MMMM DD, YYYY")
-//             }
-//         }
-//     }
-//     }
-//   }
-// `
-
