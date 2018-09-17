@@ -10,11 +10,11 @@ export const menuList = [
     text: 'Tags',
   },
   {
-    href: '/blogList',
+    href: '/blogList/1',
     text: 'BlogList',
   },
   {
     href: about,
-    text: 'About'
-  }
+    text: 'About',
+  },
 ]

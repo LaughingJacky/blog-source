@@ -10,11 +10,11 @@
 		background-color: _palette(bg-alt);
 		padding-bottom: 2em;
 		> * {
-			border-top: solid 1px _palette(border);
+			// border-top: solid 1px _palette(border);
 
-			&:first-child {
-				border-top: 0;
-			}
+			// &:first-child {
+			// 	border-top: 0;
+			// }
 
 			@include inner;
 		}

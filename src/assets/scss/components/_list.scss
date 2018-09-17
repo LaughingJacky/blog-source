@@ -107,14 +107,13 @@
 
 			&.fit {
 				display: table;
-				margin-left: (_size(element-margin) * -0.5);
 				padding: 0;
 				table-layout: fixed;
-				width: calc(100% + #{(_size(element-margin) * 0.5)});
+				margin: (_size(element-margin)) auto 0;
 
 				li {
 					display: table-cell;
-					padding: 0 0 0 (_size(element-margin) * 0.5);
+					padding: 0 (_size(element-margin) * 0.5);
 
 					> * {
 						margin-bottom: 0;
@@ -149,7 +148,7 @@
 					));
 					border-bottom: 0;
 					display: inline-block;
-					font-size: 0.8em;
+					font-size: 1em;
 					font-weight: _font(weight-bold);
 					height: 1.5em;
 					line-height: 1.5em;

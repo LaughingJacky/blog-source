@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
-let stylesStr;
+let stylesStr
 if (process.env.NODE_ENV === 'production') {
   try {
     stylesStr = require('!raw-loader!../public/styles.css'); // eslint-disable-line
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
 }
-let css;
+let css
 if (process.env.NODE_ENV === 'production') {
   css = (
     <style
       id="gatsby-inlined-css"
       dangerouslySetInnerHTML={{ __html: stylesStr }}
     />
-  );
+  )
 }
 
 const HTML = ({
@@ -42,6 +42,6 @@ const HTML = ({
       {postBodyComponents}
     </body>
   </html>
-);
+)
 
-module.exports = HTML;
+module.exports = HTML

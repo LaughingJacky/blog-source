@@ -1,0 +1,34 @@
+.page-blog-list {
+  .spotlights:nth-child(2n - 1) {
+    > section {
+      @include vendor('flex-direction', 'row-reverse');
+      background-color: desaturate(lighten(_palette(bg-alt), 4), 2);
+
+      > .content {
+        @include vendor('align-items', 'flex-end');
+      }
+    }
+  }
+  header.major {
+    margin-bottom: .5em;
+    .pub-date {
+      background-color: #77d7b9;
+      color: #ffffff;
+      margin-right: .2em;
+      padding: .3em;
+    }
+    .one-line {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .desc {
+    margin-bottom: .5em;
+    height: 5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
