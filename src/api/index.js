@@ -1,7 +1,7 @@
 // Prevent webpack window problem
-const isBrowser = () => typeof window !== 'undefined';
+const isBrowser = () => typeof window !== 'undefined'
 
-const getPath = () => (isBrowser() ? window.location.href : '');
+const getPath = () => (isBrowser() ? window.location.href : '')
 
 export {
   isBrowser,

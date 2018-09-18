@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
+import { isBrowser } from '../api'
 import Pagination from '../components/Pagination'
 
 const BlogList = ({ data = {} }) => (
@@ -54,7 +55,7 @@ const BlogList = ({ data = {} }) => (
           })}
         </div>
       </section>
-      <Pagination pathname={window.location.pathname} />
+      <Pagination pathname={isBrowser() ? window.location.pathname : ''} />
     </div>
   </div>
 )
