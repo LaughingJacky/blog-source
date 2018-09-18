@@ -2,16 +2,16 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
-import { getPath } from '../api/'
 import md5 from 'md5'
 import moment from 'moment'
 
+import { getPath } from '../api'
 import Tag from '../components/Tag'
-import TableOfContent from '../components/TableOfContent';
+import TableOfContent from '../components/TableOfContent'
 
 // Prevent webpack window problem
-const isBrowser = typeof window !== 'undefined';
-const Gitalk = isBrowser ? require('gitalk') : undefined;
+const isBrowser = typeof window !== 'undefined'
+const Gitalk = isBrowser ? require('gitalk') : undefined
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
@@ -31,20 +31,26 @@ class BlogPostTemplate extends React.Component {
       admin: ['LaughingJacky'],
       distractionFreeMode: true,
       title,
-      id
+      id,
     })
     gitalk.render('gitalk-container')
   }
+
   render() {
     const post = get(this.props, 'data.content')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const { tags, publishDate, title, description, html, headImg, toc } = post
+    const {
+      tags, publishDate, title, description, html, headImg, toc,
+    } = post
     return (
       <div className="blog-post">
         <Helmet title={`${post.title} | ${siteTitle}`} />
-        <section id="banner" style={{
+        <section
+          id="banner"
+          style={{
             backgroundImage: `url(${headImg})`,
-        }}>
+          }}
+        >
           <div className="inner">
             <header className="major">
               <h1>{title}</h1>
@@ -64,7 +70,7 @@ class BlogPostTemplate extends React.Component {
           <div className="main" dangerouslySetInnerHTML={{ __html: html }} />
           <TableOfContent toc={toc} />
         </div>
-        <hr/>
+        <hr />
         <div id="gitalk-container" />
       </div>
     )

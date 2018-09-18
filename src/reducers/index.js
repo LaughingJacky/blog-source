@@ -1,4 +1,4 @@
-const initialState = { count: 0 };
+const initialState = { count: 0 }
 
 // Root reducer
 const reducer = (state = initialState, action) => {
@@ -6,17 +6,17 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       count: state.count + 1,
-    };
+    }
   }
 
   if (action.type === 'DECREMENT') {
     return {
       ...state,
       count: state.count - 1,
-    };
+    }
   }
 
-  return state;
-};
+  return state
+}
 
-export default reducer;
+export default reducer

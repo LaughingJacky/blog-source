@@ -6,6 +6,6 @@ const getPath = () => (isBrowser() ? window.location.href : '');
 export {
   isBrowser,
   getPath,
-};
+}
 
 export * from './text'

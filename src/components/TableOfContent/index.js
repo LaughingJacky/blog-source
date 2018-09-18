@@ -15,7 +15,7 @@ const TableItem = ({ url, name }) => (
 
 TableItem.propTypes = {
   url: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 }
 
 const Table = ({ items }) => (
@@ -29,5 +29,13 @@ const TableOfContent = ({ toc }) => (
     <Table items={toc} />
   </div>
 )
+
+Table.propTypes = {
+  items: PropTypes.object,
+}
+
+TableOfContent.propTypes = {
+  toc: PropTypes.object,
+}
 
 export default TableOfContent

@@ -30,13 +30,15 @@ const BlogList = ({ data = {} }) => (
                   </Link>
                   <div className="content">
                     <div className="inner">
-                      <header className="major">
-                        <h3 className="one-line">
-                          <span className="pub-date">{publishDate}</span>
-                          <span>{title}</span>
-                        </h3>
-                      </header>
-                      <p className="desc">{description}</p>
+                      <Link to={`/blog/${slug}`}>
+                        <header className="major">
+                          <h3 className="one-line">
+                            <span className="pub-date">{publishDate}</span>
+                            <span>{title}</span>
+                          </h3>
+                        </header>
+                        <p className="desc">{description}</p>
+                      </Link>
                       <ul className="actions">
                         <li>
                           <Link to={`/blog/${slug}`} className="button">

@@ -11,7 +11,7 @@ Tag.propTypes = {
 }
 
 Tag.defaultProps = {
-  count: 0
+  count: 0,
 }
 
 export default Tag

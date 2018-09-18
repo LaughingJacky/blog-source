@@ -1,61 +1,67 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link, withPrefix } from 'gatsby'
+import { withPrefix } from 'gatsby-link'
+import PropTypes from 'prop-types'
+
 import '../assets/scss/main.scss'
-import Header from '../components/Header'
-import Menu from '../components/Menu'
-import Contact from '../components/Contact'
-import Footer from '../components/Footer'
+import Header from './Header'
+import Menu from './Menu'
+import Footer from './Footer'
 
 class Template extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            isMenuVisible: false,
-            loading: 'is-loading'
-        }
-        this.handleToggleMenu = this.handleToggleMenu.bind(this)
+  constructor(props) {
+    super(props)
+    this.state = {
+      isMenuVisible: false,
+      loading: 'is-loading',
     }
+    this.handleToggleMenu = this.handleToggleMenu.bind(this)
+  }
 
-    componentDidMount () {
-        this.timeoutId = setTimeout(() => {
-            this.setState({loading: ''});
-        }, 100);
-    }
+  componentDidMount() {
+    this.timeoutId = setTimeout(() => {
+      this.setState({ loading: '' })
+    }, 100)
+  }
 
-    componentWillUnmount () {
-        if (this.timeoutId) {
-            clearTimeout(this.timeoutId);
-        }
+  componentWillUnmount() {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId)
     }
+  }
 
-    handleToggleMenu() {
-        this.setState({
-            isMenuVisible: !this.state.isMenuVisible
-        })
-    }
+  handleToggleMenu() {
+    const { isMenuVisible } = this.state
+    this.setState({
+      isMenuVisible: !isMenuVisible,
+    })
+  }
 
-    render() {
-        const { children } = this.props
-        return (
-            <div className={`body ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
-                <Helmet>
-                    <link rel="stylesheet" href={withPrefix('skel.css')} />
-                </Helmet>
-                <div id="wrapper">
-                    <Header onToggleMenu={this.handleToggleMenu} />
-                    {children}
-                    <Footer />
-                </div>
-                <Menu onToggleMenu={this.handleToggleMenu} />
-            </div>
-        )
-    }
+  render() {
+    const { children } = this.props
+    const { loading, isMenuVisible } = this.state
+    return (
+      <div
+        className={`body ${loading} ${
+          isMenuVisible ? 'is-menu-visible' : ''
+        }`}
+      >
+        <Helmet>
+          <link rel="stylesheet" href={withPrefix('skel.css')} />
+        </Helmet>
+        <div id="wrapper">
+          <Header onToggleMenu={this.handleToggleMenu} />
+          {children}
+          <Footer />
+        </div>
+        <Menu onToggleMenu={this.handleToggleMenu} />
+      </div>
+    )
+  }
 }
 
 Template.propTypes = {
-    children: React.PropTypes.func
+  children: PropTypes.func,
 }
 
 export default Template
@@ -75,4 +81,3 @@ export default Template
 //     }
 //   }
 // `
-
