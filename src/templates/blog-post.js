@@ -26,7 +26,7 @@ class BlogPostTemplate extends React.Component {
     const gitalk = new Gitalk({
       clientID: '7d15c5c496b35e601dae',
       clientSecret: '25fb2be35286f43cd6e59167fcd2b98c2dc5500f',
-      repo: 'Gitment',
+      repo: 'gitalk',
       owner: 'LaughingJacky',
       admin: ['LaughingJacky'],
       distractionFreeMode: true,
