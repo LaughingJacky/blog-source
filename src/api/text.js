@@ -12,6 +12,7 @@ const beautifyCode = (code, language = 'javascript') => {
   // Highlight only if the language is valid.
   const highlighted = validLang ? hljs.highlight(language, code).value : code
   // Render the highlighted code with `hljs` class.
+
   return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`
 }
 
@@ -45,6 +46,7 @@ const getContent = (mdFile) => {
   }
 
   const html = md.render(mdFile)
+  console.log(html)
   return { html, toc }
 }
 

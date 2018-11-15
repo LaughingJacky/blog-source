@@ -20,6 +20,10 @@ const Head = () => (
     <link rel="shortcut icon" href={headConfig.meta.favicon || 'https://cdn4.iconfinder.com/data/icons/emoji-18/61/4-512.png'} />
     {/* <meta name="google-site-verification" content={config.meta.google_site_verification} /> */}
     <link rel="stylesheet" href={withPrefix('skel.css')} />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"
+    />
   </Helmet>
 )
 

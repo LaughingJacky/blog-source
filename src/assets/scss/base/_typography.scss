@@ -56,7 +56,7 @@
 	}
 
 	p {
-		margin: 0 0 _size(element-margin) 0;
+		margin: (_size(element-margin) * 0.5) 0 (_size(element-margin) * 0.5) 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -128,27 +128,27 @@
 		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
 	}
 
-	code {
-		background: _palette(border-bg);
-		font-family: _font(family-fixed);
-		font-size: 0.9em;
-		margin: 0 0.25em;
-		padding: 0.25em 0.65em;
-	}
+	// code {
+	// 	background: _palette(border-bg);
+	// 	font-family: _font(family-fixed);
+	// 	font-size: 0.9em;
+	// 	margin: 0 0.25em;
+	// 	padding: 0.25em 0.65em;
+	// }
 
-	pre {
-		-webkit-overflow-scrolling: touch;
-		font-family: _font(family-fixed);
-		font-size: 0.9em;
-		margin: 0 0 _size(element-margin) 0;
+	// pre {
+	// 	-webkit-overflow-scrolling: touch;
+	// 	font-family: _font(family-fixed);
+	// 	font-size: 0.9em;
+	// 	margin: 0 0 _size(element-margin) 0;
 
-		code {
-			display: block;
-			line-height: 1.75;
-			padding: 1em 1.5em;
-			overflow-x: auto;
-		}
-	}
+	// 	code {
+	// 		display: block;
+	// 		line-height: 1.75;
+	// 		padding: 1em 1.5em;
+	// 		overflow-x: auto;
+	// 	}
+	// }
 
 	hr {
 		border: 0;
