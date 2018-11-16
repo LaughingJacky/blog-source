@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 import md5 from 'md5'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 import { getPath } from '../api'
 import Tag from '../components/Tag'
@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
     const issueDate = '2018-08-29'
     let id = getPath()
     let title = document ? document.title : ''
-    if (moment(content.createDate).isAfter(issueDate)) {
+    if (dayjs(content.createDate).isAfter(issueDate)) {
       title = `${content.title} | Shawb's Blog`
       id = md5(content.title)
     }
