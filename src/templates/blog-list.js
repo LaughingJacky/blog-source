@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import { isBrowser } from '../api'
+import { isBrowser, getUrl } from '../api'
 import Pagination from '../components/Pagination'
 
 const BlogList = ({ data = {} }) => (
@@ -22,20 +22,20 @@ const BlogList = ({ data = {} }) => (
           </header>
           {data.allContetfulBlogPost.edges.map(({ node }) => {
             const {
-              slug, description, headImg, publishDate, title,
+              description, headImg, publishDate, title, formattedDate,
             } = node
             return (
               <section id="two" className="spotlights" key={title}>
                 <section>
-                  <Link to={`/blog/${slug}`} className="image">
+                  <Link to={getUrl(publishDate, title)} className="image">
                     <img src={headImg} alt="" />
                   </Link>
                   <div className="content">
                     <div className="inner">
-                      <Link to={`/blog/${slug}`}>
+                      <Link to={getUrl(publishDate, title)}>
                         <header className="major">
                           <h3 className="one-line">
-                            <span className="pub-date">{publishDate}</span>
+                            <span className="pub-date">{formattedDate}</span>
                             <span>{title}</span>
                           </h3>
                         </header>
@@ -43,7 +43,7 @@ const BlogList = ({ data = {} }) => (
                       </Link>
                       <ul className="actions">
                         <li>
-                          <Link to={`/blog/${slug}`} className="button">
+                          <Link to={getUrl(publishDate, title)} className="button">
                             Learn more
                           </Link>
                         </li>
@@ -78,7 +78,8 @@ export const pageQuery = graphql`
         node {
           title
           slug
-          publishDate(formatString: "MMMM Do, YYYY")
+          publishDate
+          formattedDate: publishDate(formatString: "MMMM Do, YYYY")
           headImg
           description
         }

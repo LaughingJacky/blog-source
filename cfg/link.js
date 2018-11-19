@@ -20,10 +20,10 @@ const menuList = [
 ]
 
 const redirectors = [
-  {
-    fromPath: '/',
-    toPath: '/blogPost/1/',
-  },
+  // {
+  //   fromPath: '/',
+  //   toPath: '/blogList/1/',
+  // },
 ]
 
 module.exports = {
