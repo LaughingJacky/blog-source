@@ -129,7 +129,7 @@ TagPage.propTypes = {
 export default TagPage
 export const pageQuery = graphql`
   query myTags {
-    tags: allContentfulBlogPost {
+    tags: allContetfulBlogPost {
       edges {
         node {
           title

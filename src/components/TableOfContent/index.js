@@ -31,11 +31,11 @@ const TableOfContent = ({ toc }) => (
 )
 
 Table.propTypes = {
-  items: PropTypes.object,
+  items: PropTypes.array,
 }
 
 TableOfContent.propTypes = {
-  toc: PropTypes.object,
+  toc: PropTypes.array,
 }
 
 export default TableOfContent

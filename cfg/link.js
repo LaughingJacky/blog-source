@@ -22,7 +22,7 @@ const menuList = [
 const redirectors = [
   {
     fromPath: '/',
-    toPath: '/page/1/',
+    toPath: '/blogPost/1/',
   },
 ]
 

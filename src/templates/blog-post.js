@@ -16,7 +16,7 @@ const Gitalk = isBrowser ? require('gitalk') : undefined
 
 class BlogPostTemplate extends Component {
   componentDidMount() {
-    const content = get(this.props, 'data.content')
+    const content = get(this.props, 'data.content.edges[0].node')
     const issueDate = '2018-08-29'
     let id = getPath()
     let title = document ? document.title : ''
@@ -38,7 +38,8 @@ class BlogPostTemplate extends Component {
   }
 
   render() {
-    const post = get(this.props, 'data.content')
+    const post = get(this.props, 'data.content.edges[0].node')
+    console.log(post)
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const {
       tags, publishDate, title, description, html, headImg, toc,
@@ -81,15 +82,26 @@ class BlogPostTemplate extends Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    content: contentfulBlogPost(slug: { eq: $slug }) {
-      title
-      publishDate(formatString: "MMMM Do, YYYY")
-      tags
-      toc
-      description
-      headImg
-      html
+  query BlogPostByIndex(
+    $index: Int
+  ) {
+    content: allContetfulBlogPost (
+      sort: { fields: publishDate, order: DESC }
+      limit: 1
+      skip: $index
+    ) {
+      edges {
+        node {
+          title
+          publishDate(formatString: "MMMM Do, YYYY")
+          tags
+          toc
+          description
+          headImg
+          html
+        }
+      }
+
     }
   }
 `

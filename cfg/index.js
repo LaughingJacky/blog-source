@@ -3,7 +3,7 @@ const link = require('./link')
 const blogPost = require('./blog-post')
 
 module.exports = {
-  header,
-  link,
-  blogPost,
+  ...header,
+  ...link,
+  ...blogPost,
 }

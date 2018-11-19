@@ -20,7 +20,7 @@ const BlogList = ({ data = {} }) => (
           <header className="major">
             <h1>博客列表</h1>
           </header>
-          {data.allContentfulBlogPost.edges.map(({ node }) => {
+          {data.allContetfulBlogPost.edges.map(({ node }) => {
             const {
               slug, description, headImg, publishDate, title,
             } = node
@@ -69,7 +69,7 @@ export default BlogList
 
 export const pageQuery = graphql`
   query BlogIndexQuery($limit: Int, $skip: Int) {
-    allContentfulBlogPost(
+    allContetfulBlogPost(
       sort: { fields: [publishDate], order: DESC }
       limit: $limit
       skip: $skip

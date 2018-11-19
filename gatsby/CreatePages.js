@@ -2,6 +2,7 @@ const path = require('path')
 const dayjs = require('dayjs')
 const { redirectors = [], blogPostCfg } = require('../cfg')
 
+
 module.exports = ({ graphql, boundActionCreators }) => {
   const { createPage, createRedirect } = boundActionCreators
 
@@ -14,13 +15,11 @@ module.exports = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allBlogPost(sort: { fields: [createdDate], order: DESC }) {
+        allContetfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
           edges {
             node {
               title
-              createdDate
-              id
-              url
+              publishDate
             }
           }
         }
@@ -30,14 +29,13 @@ module.exports = ({ graphql, boundActionCreators }) => {
         console.error(result.error)
         return reject()
       }
-      console.log(result)
-      const posts = result.data.allPostMarkdown.edges
+      const posts = result.data.allContetfulBlogPost.edges
       const pages = Math.ceil(posts.length / blogPostCfg.maxPages)
 
       for (let index = 0; index < pages; index += 1) {
         createPage({
-          path: `page/${index + 1}`,
-          component: path.resolve('./src/templates/page.js'),
+          path: `blogList/${index + 1}`,
+          component: path.resolve('./src/templates/blog-list.js'),
           context: {
             // Data passed to context is available in page queries as GraphQL variables.
             limit: blogPostCfg.maxPages,
@@ -47,11 +45,11 @@ module.exports = ({ graphql, boundActionCreators }) => {
       }
 
       posts.map(({ node }, index) => {
-        const { createdDate, url } = node
-        const date = dayjs(createdDate).format('YYYY/MM/DD')
-        const postPath = url === 'about' ? url : `${date}/${url}`
+        const { publishDate, title } = node
+        const date = dayjs(publishDate).format('YYYY/MM/DD')
+        // const postPath = slug === 'about' ? slug : `${date}/${title}`
         return createPage({
-          path: postPath,
+          path: `${date}/${title}`,
           component: path.resolve('./src/templates/blog-post.js'),
           context: {
             // Data passed to context is available in page queries as GraphQL variables.

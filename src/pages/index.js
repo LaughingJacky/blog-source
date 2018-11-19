@@ -102,7 +102,7 @@ export default HomeIndex
 
 export const pageQuery = graphql`
   query PageQuery {
-    latestPosts: allContentfulBlogPost(
+    latestPosts: allContetfulBlogPost(
       limit: 4
       sort: { fields: [publishDate], order: DESC }
     ) {
