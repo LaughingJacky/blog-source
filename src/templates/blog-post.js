@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
@@ -13,7 +14,7 @@ import TableOfContent from '../components/TableOfContent'
 const isBrowser = typeof window !== 'undefined'
 const Gitalk = isBrowser ? require('gitalk') : undefined
 
-class BlogPostTemplate extends React.Component {
+class BlogPostTemplate extends Component {
   componentDidMount() {
     const content = get(this.props, 'data.content')
     const issueDate = '2018-08-29'

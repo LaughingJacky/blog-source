@@ -1,4 +1,6 @@
-export const blogPostCfg = {
-  maxPages: 2,
-  pageBufferSize: 1,
+module.exports = {
+  blogPostCfg: {
+    maxPages: 2,
+    pageBufferSize: 1,
+  },
 }

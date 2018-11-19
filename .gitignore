@@ -1,6 +1,7 @@
 node_modules/
 public
 .gatsby-context.js
+.env.development
 .DS_Store
 .intermediate-representation/
 .cache/

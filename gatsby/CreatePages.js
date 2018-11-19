@@ -14,7 +14,7 @@ module.exports = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allPostMarkdown(sort: { fields: [createdDate], order: DESC }) {
+        allBlogPost(sort: { fields: [createdDate], order: DESC }) {
           edges {
             node {
               title
@@ -30,8 +30,9 @@ module.exports = ({ graphql, boundActionCreators }) => {
         console.error(result.error)
         return reject()
       }
+      console.log(result)
       const posts = result.data.allPostMarkdown.edges
-      const pages = Math.ceil(posts.length / maxPostsInPage)
+      const pages = Math.ceil(posts.length / blogPostCfg.maxPages)
 
       for (let index = 0; index < pages; index += 1) {
         createPage({
@@ -39,8 +40,8 @@ module.exports = ({ graphql, boundActionCreators }) => {
           component: path.resolve('./src/templates/page.js'),
           context: {
             // Data passed to context is available in page queries as GraphQL variables.
-            limit: maxPostsInPage,
-            skip: index * maxPostsInPage,
+            limit: blogPostCfg.maxPages,
+            skip: index * blogPostCfg.maxPages,
           },
         })
       }
