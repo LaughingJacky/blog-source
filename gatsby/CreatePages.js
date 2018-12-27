@@ -3,8 +3,8 @@ const dayjs = require('dayjs')
 const { redirectors = [], blogPostCfg } = require('../cfg')
 
 
-module.exports = ({ graphql, boundActionCreators }) => {
-  const { createPage, createRedirect } = boundActionCreators
+module.exports = ({ graphql, actions }) => {
+  const { createPage, createRedirect } = actions
 
   redirectors.forEach(({ fromPath, toPath = '/' }) => {
     createRedirect({ fromPath, redirectInBrowser: true, toPath })

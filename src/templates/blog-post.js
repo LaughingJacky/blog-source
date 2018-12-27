@@ -5,7 +5,7 @@ import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 import md5 from 'md5'
 import dayjs from 'dayjs'
-
+import Layout from '../components/Layout'
 import { getPath } from '../api'
 import Tag from '../components/Tag'
 import TableOfContent from '../components/TableOfContent'
@@ -45,36 +45,38 @@ class BlogPostTemplate extends Component {
       tags, publishDate, title, description, html, headImg, toc,
     } = post
     return (
-      <div className="blog-post">
-        <Helmet title={`${post.title} | ${siteTitle}`} />
-        <section
-          id="banner"
-          style={{
-            backgroundImage: `url(${headImg})`,
-          }}
-        >
-          <div className="inner">
-            <header className="major">
-              <h1>{title}</h1>
-              <p className="date">{publishDate}</p>
-            </header>
-            <div className="content">
-              <p>{description}</p>
-              <div className="tags">
-                {
-                  tags && tags.map(tag => <Tag name={tag} key={tag} />)
-                }
+      <Layout>
+        <div className="blog-post">
+          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <section
+            id="banner"
+            style={{
+              backgroundImage: `url(${headImg})`,
+            }}
+          >
+            <div className="inner">
+              <header className="major">
+                <h1>{title}</h1>
+                <p className="date">{publishDate}</p>
+              </header>
+              <div className="content">
+                <p>{description}</p>
+                <div className="tags">
+                  {
+                    tags && tags.map(tag => <Tag name={tag} key={tag} />)
+                  }
+                </div>
               </div>
             </div>
+          </section>
+          <div className="container">
+            <div className="main" dangerouslySetInnerHTML={{ __html: html }} />
+            <TableOfContent toc={toc} />
           </div>
-        </section>
-        <div className="container">
-          <div className="main" dangerouslySetInnerHTML={{ __html: html }} />
-          <TableOfContent toc={toc} />
+          <hr />
+          <div id="gitalk-container" />
         </div>
-        <hr />
-        <div id="gitalk-container" />
-      </div>
+      </Layout>
     )
   }
 }
