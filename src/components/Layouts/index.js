@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from './Head'
-import '../assets/scss/main.scss'
-import Header from '../components/Header'
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
+import '../../assets/scss/main.scss'
+import Header from '../Header'
+import Menu from '../Menu'
+import Footer from '../Footer'
 
 if (typeof window !== 'undefined') {
   // Make scroll behavior of internal links smooth
@@ -54,7 +54,7 @@ class Template extends React.Component {
         <Head />
         <div id="wrapper">
           <Header onToggleMenu={this.handleToggleMenu} />
-          {children()}
+          {children}
           <Footer />
         </div>
         <Menu onToggleMenu={this.handleToggleMenu} />

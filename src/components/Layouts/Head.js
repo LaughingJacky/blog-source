@@ -1,7 +1,7 @@
 import React from 'react'
 import { withPrefix } from 'gatsby-link'
 import Helmet from 'react-helmet'
-import { headConfig } from '../cfg'
+import { headConfig } from '../../../cfg'
 
 const Head = () => (
   <Helmet

@@ -44,4 +44,4 @@ const HTML = ({
   </html>
 )
 
-module.exports = HTML
+export default HTML

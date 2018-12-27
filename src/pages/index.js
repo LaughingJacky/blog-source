@@ -1,9 +1,12 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 
+import { getUrl } from '../api'
+import Layout from '../components/Layouts'
 import Banner from '../components/Banner'
 
 import pic04 from '../assets/images/pic04.jpg'
@@ -31,8 +34,9 @@ class HomeIndex extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const siteDescription = get(this.props, 'data.site.siteMetadata.description')
     const latestPosts = get(this.props, 'data.latestPosts.edges')
+    console.log(latestPosts)
     return (
-      <div>
+      <Layout>
         <Helmet>
           <title>{siteTitle}</title>
           <meta name="description" content={siteDescription} />
@@ -63,11 +67,11 @@ class HomeIndex extends React.Component {
                   <h3>{node.title}</h3>
                   <p>{node.description}</p>
                 </header>
-                <Link to={`/blog/${node.slug}`} className="link primary" />
+                <Link to={getUrl(node.publishDate, node.title)} className="link primary" />
               </article>
             ))}
           </section>
-          <section id="two">
+          {/* <section id="two">
             <div className="inner">
               <header className="major">
                 <h2>Massa libero</h2>
@@ -89,10 +93,10 @@ class HomeIndex extends React.Component {
                 </li>
               </ul>
             </div>
-          </section>
+          </section> */}
         </div>
         <div id="gitalk-container" />
-      </div>
+      </Layout>
     )
   }
 }
@@ -101,7 +105,7 @@ export default HomeIndex
 
 export const pageQuery = graphql`
   query PageQuery {
-    latestPosts: allContentfulBlogPost(
+    latestPosts: allContetfulBlogPost(
       limit: 4
       sort: { fields: [publishDate], order: DESC }
     ) {
@@ -111,6 +115,7 @@ export const pageQuery = graphql`
           slug
           headImg
           description
+          publishDate
         }
       }
     }

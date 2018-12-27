@@ -1,6 +1,6 @@
 const about = '/blog/about-shawb-wong'
 
-export const menuList = [
+const menuList = [
   {
     href: '/',
     text: 'Home',
@@ -18,3 +18,15 @@ export const menuList = [
     text: 'About',
   },
 ]
+
+const redirectors = [
+  // {
+  //   fromPath: '/',
+  //   toPath: '/blogList/1/',
+  // },
+]
+
+module.exports = {
+  menuList,
+  redirectors,
+}

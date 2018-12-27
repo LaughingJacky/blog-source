@@ -1,42 +1,79 @@
-let contentfulConfig
+/* eslint max-len: 1 */
+const dayjs = require('dayjs')
+const Remarkable = require('remarkable')
 
-try {
-  // Load the Contentful config from the .contentful.json
-  contentfulConfig = require('./.contentful')
-} catch (_) {}
+const extractData = (site, edge) => {
+  const url = `${site.siteMetadata.siteUrl}/${dayjs(
+    edge.node.createdDate,
+  ).format('YYYY/MM/DD')}/${edge.node.url}`
 
-// Overwrite the Contentful config with environment variables if they exist
-contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
-  accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-}
+  const md = new Remarkable({})
+  const description = md.render(edge.node.content)
 
-const { spaceId, accessToken } = contentfulConfig
-
-if (!spaceId || !accessToken) {
-  throw new Error(
-    'Contentful spaceId and the delivery token need to be provided.'
-  )
+  return {
+    title: edge.node.title,
+    description,
+    date: dayjs(edge.node.createdDate).format('MMMM DD, YYYY, h:mm A'),
+    url,
+    guid: url,
+  }
 }
 
 module.exports = {
   siteMetadata: {
-    title: "王晓博 - 银河系漫游指南",
-    author: "Shawb Wong",
-    description: "如果这个博客好久不更新了,说明我更浑浑噩噩了"
+    title: '王晓博 - 银河系漫游指南',
+    author: 'Shawb Wong',
+    description: '如果这个博客好久不更新了,说明我更浑浑噩噩了',
   },
   pathPrefix: '/',
   // pathPrefix: '/shawb-wong',
   plugins: [
-    'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     'gatsby-plugin-catch-links',
-    // 'gatsby-plugin-sharp',
-    // {
-    //   resolve: 'gatsby-source-contentful',
-    //   options: contentfulConfig,
-    // },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+    },
+    {
+      resolve: 'gatsby-plugin-nprogress',
+    },
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title,
+                description,
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allPostMarkdown } }) => allPostMarkdown.edges.map(edge => extractData(site, edge)),
+            query: `
+              {
+                allPostMarkdown(limit: 10, sort: {fields: [createDate], order: DESC}) {
+                  edges {
+                    node {
+                      content
+                      title
+                      url
+                      createdDate
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/feed.xml',
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -49,9 +86,11 @@ module.exports = {
         icons: [{
           src: '/favicons/Mikoto-145*145.png',
           sizes: '192x192',
-          type: 'image/png'
-        }]
-      }
-    }
+          type: 'image/png',
+        }],
+      },
+    },
+    'gatsby-plugin-offline', // put this after gatsby-plugin-manifest
+    'gatsby-plugin-netlify', // make sure to put last in the array
   ],
 }

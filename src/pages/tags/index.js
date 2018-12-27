@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import Link from 'gatsby-link';
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
@@ -128,7 +129,7 @@ TagPage.propTypes = {
 export default TagPage
 export const pageQuery = graphql`
   query myTags {
-    tags: allContentfulBlogPost {
+    tags: allContetfulBlogPost {
       edges {
         node {
           title
