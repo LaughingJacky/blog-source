@@ -1,22 +1,22 @@
 import React from 'react'
 
-let stylesStr
-if (process.env.NODE_ENV === 'production') {
-  try {
-    stylesStr = require('!raw-loader!../public/styles.css'); // eslint-disable-line
-  } catch (e) {
-    console.log(e)
-  }
-}
-let css
-if (process.env.NODE_ENV === 'production') {
-  css = (
-    <style
-      id="gatsby-inlined-css"
-      dangerouslySetInnerHTML={{ __html: stylesStr }}
-    />
-  )
-}
+// let stylesStr
+// if (process.env.NODE_ENV === 'production') {
+//   try {
+//     stylesStr = require('!raw-loader!../public/styles.css'); // eslint-disable-line
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
+// let css
+// if (process.env.NODE_ENV === 'production') {
+//   css = (
+//     <style
+//       id="gatsby-inlined-css"
+//       dangerouslySetInnerHTML={{ __html: stylesStr }}
+//     />
+//   )
+// }
 
 const HTML = ({
   htmlAttributes, headComponents, bodyAttributes, preBodyComponents, body, postBodyComponents,
@@ -30,7 +30,6 @@ const HTML = ({
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       {headComponents}
-      {css}
     </head>
     <body {...bodyAttributes}>
       {preBodyComponents}

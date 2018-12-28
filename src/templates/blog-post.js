@@ -5,7 +5,7 @@ import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 import md5 from 'md5'
 import dayjs from 'dayjs'
-import Layout from '../components/Layout'
+import Layout from '../components/Layouts'
 import { getPath } from '../api'
 import Tag from '../components/Tag'
 import TableOfContent from '../components/TableOfContent'
@@ -39,7 +39,6 @@ class BlogPostTemplate extends Component {
 
   render() {
     const post = get(this.props, 'data.content.edges[0].node')
-    console.log(post)
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const {
       tags, publishDate, title, description, html, headImg, toc,
@@ -103,7 +102,11 @@ export const pageQuery = graphql`
           html
         }
       }
-
+    }
+    site {
+      siteMetadata {
+        title
+      }
     }
   }
 `

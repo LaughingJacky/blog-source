@@ -3,9 +3,7 @@ const dayjs = require('dayjs')
 const Remarkable = require('remarkable')
 
 const extractData = (site, edge) => {
-  const url = `${site.siteMetadata.siteUrl}/${dayjs(
-    edge.node.createdDate,
-  ).format('YYYY/MM/DD')}/${edge.node.url}`
+  const url = `${site.siteMetadata.siteUrl}//${dayjs(edge.node.publishDate).format('YYYY/MM/DD')}/${edge.node.url}`
 
   const md = new Remarkable({})
   const description = md.render(edge.node.content)
@@ -23,6 +21,7 @@ module.exports = {
   siteMetadata: {
     title: '王晓博 - 银河系漫游指南',
     author: 'Shawb Wong',
+    siteUrl: 'https://laughingjacky.netlify.com',
     description: '如果这个博客好久不更新了,说明我更浑浑噩噩了',
   },
   pathPrefix: '/',
@@ -54,16 +53,19 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allPostMarkdown } }) => allPostMarkdown.edges.map(edge => extractData(site, edge)),
+            serialize: ({ query: { site, allContetfulBlogPost } }) => allContetfulBlogPost.edges.map(edge => extractData(site, edge)),
             query: `
               {
-                allPostMarkdown(limit: 10, sort: {fields: [createDate], order: DESC}) {
+                allContetfulBlogPost(
+                  limit: 10
+                  sort: {fields: [publishDate], order: DESC}
+                ) {
                   edges {
                     node {
-                      content
                       title
-                      url
-                      createdDate
+                      description
+                      headImg
+                      publishDate
                     }
                   }
                 }

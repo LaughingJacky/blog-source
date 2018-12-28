@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import { isBrowser, getUrl } from '../api'
 import Pagination from '../components/Pagination'
-import Layout from '../components/Layout'
+import Layout from '../components/Layouts'
 
 const BlogList = ({ data = {} }) => (
   <Layout>
