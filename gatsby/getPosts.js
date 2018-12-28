@@ -1,8 +1,8 @@
 const axios = require('axios')
 
-// require('dotenv').config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// })
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const { API_BASE_URL, API_SPACE_ID, API_TOKEN } = process.env
 
