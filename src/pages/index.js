@@ -34,7 +34,6 @@ class HomeIndex extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     const siteDescription = get(this.props, 'data.site.siteMetadata.description')
     const latestPosts = get(this.props, 'data.latestPosts.edges')
-    console.log(latestPosts)
     return (
       <Layout>
         <Helmet>
