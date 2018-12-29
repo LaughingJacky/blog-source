@@ -6,7 +6,7 @@ import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 
 import { getUrl } from '../api'
-import Layout from '../components/Layouts'
+import Layout from '../components/Layouts/index'
 import Banner from '../components/Banner'
 
 import pic04 from '../assets/images/pic04.jpg'

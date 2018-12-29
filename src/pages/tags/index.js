@@ -4,7 +4,8 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import Tag from '../../components/Tag'
+import Tag from '../../components/Tag/index'
+import Layout from '../../components/Layouts/index'
 
 const Item = ({ url = '', title = '', publishDate = '' }) => (
   <li key={title}>
@@ -86,37 +87,39 @@ class TagPage extends Component {
     const { location } = this.props
     const tags = Object.keys(tCfy).sort()
     return (
-      <div id="main" className="tag-page alt">
-        <Helmet>
-          <title>博客列表</title>
-          <meta name="description" content="Generic Page" />
-        </Helmet>
-        <section id="banner" className="style2">
-          <div className="inner">
-            <header className="major">
-              <h1>
-                文章分类
-                <span className="tips">按标签分类</span>
-              </h1>
-              <div className="tag-list">
-                {tags.map(item => (
-                  <Tag name={item} count={tCfy[item].length} key={item} />
-                ))}
-              </div>
-            </header>
+      <Layout>
+        <div id="main" className="tag-page alt">
+          <Helmet>
+            <title>博客列表</title>
+            <meta name="description" content="Generic Page" />
+          </Helmet>
+          <section id="banner" className="style2">
+            <div className="inner">
+              <header className="major">
+                <h1>
+                  文章分类
+                  <span className="tips">按标签分类</span>
+                </h1>
+                <div className="tag-list">
+                  {tags.map(item => (
+                    <Tag name={item} count={tCfy[item].length} key={item} />
+                  ))}
+                </div>
+              </header>
+            </div>
+          </section>
+          <div className="content">
+            {tags.map(t => (
+              <TagBlock
+                tag={t}
+                articles={tCfy[t].filter((v, i, a) => a.indexOf(v) === i)}
+                isActive={decodeURI(location.hash) === `#${t}`}
+                key={t}
+              />
+            ))}
           </div>
-        </section>
-        <div className="content">
-          {tags.map(t => (
-            <TagBlock
-              tag={t}
-              articles={tCfy[t].filter((v, i, a) => a.indexOf(v) === i)}
-              isActive={decodeURI(location.hash) === `#${t}`}
-              key={t}
-            />
-          ))}
         </div>
-      </div>
+      </Layout>
     )
   }
 }

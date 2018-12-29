@@ -5,8 +5,8 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
 import { isBrowser, getUrl } from '../api'
-import Pagination from '../components/Pagination'
-import Layout from '../components/Layouts'
+import Pagination from '../components/Pagination/index'
+import Layout from '../components/Layouts/index'
 
 const BlogList = ({ data = {} }) => (
   <Layout>

@@ -5,10 +5,10 @@ import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 import md5 from 'md5'
 import dayjs from 'dayjs'
-import Layout from '../components/Layouts'
+import Layout from '../components/Layouts/index'
 import { getPath } from '../api'
-import Tag from '../components/Tag'
-import TableOfContent from '../components/TableOfContent'
+import Tag from '../components/Tag/index'
+import TableOfContent from '../components/TableOfContent/index'
 
 // Prevent webpack window problem
 const isBrowser = typeof window !== 'undefined'
