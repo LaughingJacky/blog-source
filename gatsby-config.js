@@ -36,46 +36,46 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-nprogress',
     },
-    {
-      resolve: 'gatsby-plugin-feed',
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title,
-                description,
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allContetfulBlogPost } }) => allContetfulBlogPost.edges.map(edge => extractData(site, edge)),
-            query: `
-              {
-                allContetfulBlogPost(
-                  limit: 10
-                  sort: {fields: [publishDate], order: DESC}
-                ) {
-                  edges {
-                    node {
-                      title
-                      description
-                      headImg
-                      publishDate
-                    }
-                  }
-                }
-              }
-            `,
-            output: '/feed.xml',
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-feed',
+    //   options: {
+    //     query: `
+    //       {
+    //         site {
+    //           siteMetadata {
+    //             title,
+    //             description,
+    //             siteUrl
+    //             site_url: siteUrl
+    //           }
+    //         }
+    //       }
+    //     `,
+    //     feeds: [
+    //       {
+    //         serialize: ({ query: { site, allContetfulBlogPost } }) => allContetfulBlogPost.edges.map(edge => extractData(site, edge)),
+    //         query: `
+    //           {
+    //             allContetfulBlogPost(
+    //               limit: 10
+    //               sort: {fields: [publishDate], order: DESC}
+    //             ) {
+    //               edges {
+    //                 node {
+    //                   title
+    //                   description
+    //                   headImg
+    //                   publishDate
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         `,
+    //         output: '/feed.xml',
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
