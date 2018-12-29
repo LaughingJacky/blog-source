@@ -6,5 +6,5 @@ public
 .DS_Store
 .intermediate-representation/
 .cache/
-yarn.lock
 yarn-error.log
+package-lock.json
