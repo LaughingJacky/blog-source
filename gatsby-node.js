@@ -1,7 +1,7 @@
-exports.sourceNodes = require('./gatsby/sourceNodes.js')
+exports.sourceNodes = require('./gatsby/sourceNodes')
 
-exports.onCreateNode = require('./gatsby/onCreateNode.js')
+exports.onCreateNode = require('./gatsby/onCreateNode')
 
-exports.createPages = require('./gatsby/CreatePages.js')
+exports.createPages = require('./gatsby/CreatePages')
 
-exports.onCreateWebpackConfig = require('./gatsby/onCreateWebpackConfig.js')
+exports.onCreateWebpackConfig = require('./gatsby/onCreateWebpackConfig')

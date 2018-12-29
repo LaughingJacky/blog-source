@@ -13500,7 +13500,7 @@ webpack-stats-plugin@^0.1.5:
   resolved "http://registry.npm.baidu-int.com/webpack-stats-plugin/-/webpack-stats-plugin-0.1.5.tgz#29e5f12ebfd53158d31d656a113ac1f7b86179d9"
   integrity sha1-KeXxLr/VMVjTHWVqETrB97hhedk=
 
-webpack@^4.12.0, webpack@^4.19.0, webpack@^4.23.1:
+webpack@^4.12.0, webpack@^4.23.1:
   version "4.28.2"
   resolved "http://registry.npm.baidu-int.com/webpack/-/webpack-4.28.2.tgz#6b534a8bc91a45787ed631dc2e87aec94e9e4db7"
   integrity sha1-a1NKi8kaRXh+1jHcLoeuyU6eTbc=
