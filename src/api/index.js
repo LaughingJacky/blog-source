@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+
 // Prevent webpack window problem
 const isBrowser = () => typeof window !== 'undefined'
 

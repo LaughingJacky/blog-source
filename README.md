@@ -1,6 +1,8 @@
 # 个人博客
 Powered by Gatsby.
-Hosted on Netlify.
+Hosted on Now & aerobatic.
+> aerobatic deploy
+> now
 
 ## 主题: forty
 

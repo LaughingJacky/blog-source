@@ -7,4 +7,8 @@ public/
 .intermediate-representation/
 .cache/
 yarn-error.log
+aero-debug.log
 package-lock.json
+now.json
+aerobatic.yml
+aero-deploy.tar.gz

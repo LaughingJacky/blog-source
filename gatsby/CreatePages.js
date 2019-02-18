@@ -1,7 +1,10 @@
 const path = require('path')
 const dayjs = require('dayjs')
-const { redirectors = [], blogPostCfg } = require('../cfg')
+const dayjsPluginUTC = require('dayjs-plugin-utc').default;
 
+dayjs.extend(dayjsPluginUTC)
+
+const { redirectors = [], blogPostCfg } = require('../cfg')
 
 module.exports = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
@@ -46,7 +49,8 @@ module.exports = ({ graphql, actions }) => {
 
       posts.map(({ node }, index) => {
         const { publishDate, title } = node
-        const date = dayjs(publishDate).format('YYYY/MM/DD')
+        console.log(publishDate);
+        const date = dayjs(publishDate).utcOffset(8).format('YYYY/MM/DD')
         // const postPath = slug === 'about' ? slug : `${date}/${title}`
         return createPage({
           path: `${date}/${title}`,

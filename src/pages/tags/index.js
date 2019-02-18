@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
+import { getUrl } from '../../api'
 
 import Tag from '../../components/Tag/index'
 import Layout from '../../components/Layouts/index'
@@ -21,7 +22,7 @@ const Item = ({ url = '', title = '', publishDate = '' }) => (
 Item.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  publishDate: PropTypes.string.isRequired,
+  publishDate: PropTypes.string.isRequired
 }
 
 
@@ -38,9 +39,9 @@ const TagBlock = ({ tag = 'tag', articles = [], isActive = false }) => (
     <ol>
       {articles.map(a => (
         <Item
-          url={a.url}
+          url={getUrl(a.publishDate, a.title)}
           title={a.title}
-          publishDate={a.publishDate}
+          publishDate={a.formattedDate}
           key={a.title}
         />
       ))}
@@ -68,10 +69,10 @@ class TagPage extends Component {
     const { edges } = data.tags
     edges.forEach(({ node: item }) => {
       const {
-        title, slug, publishDate, tags,
+        title, slug, publishDate, tags, formattedDate
       } = item
       tags.forEach((t) => {
-        const entity = { title, url: `/blog/${slug}`, publishDate }
+        const entity = { title, url: `/blog/${slug}`, publishDate, formattedDate }
         if (tCfy[t]) {
           tCfy[t].push(entity)
         } else {
@@ -138,7 +139,8 @@ export const pageQuery = graphql`
           title
           tags
           slug
-          publishDate(formatString: "MMMM Do, YYYY")
+          publishDate
+          formattedDate: publishDate(formatString: "MMMM Do, YYYY")
         }
       }
     }

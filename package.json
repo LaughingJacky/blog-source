@@ -6,7 +6,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-loader": "^8.0.2",
-    "dayjs": "^1.7.5",
+    "dayjs": "^1.8.6",
+    "dayjs-plugin-utc": "^0.1.0",
     "dotenv": "^6.1.0",
     "gatsby": "^2.0.76",
     "gatsby-link": "^2.0.7",
@@ -53,6 +54,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "develop": "gatsby develop",
     "build": "npm run clean && gatsby build",
+    "now-build": "npm run build",
+    "aero-deploy": "npm run build && aero deploy --directory public",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   },
   "devDependencies": {
