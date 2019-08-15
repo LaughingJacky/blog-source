@@ -21,8 +21,6 @@ const getPosts = async (contentType) => {
   return res
 }
 
-console.log(API_SPACE_ID);
-
 if (API_SPACE_ID && API_TOKEN) {
   module.exports = getPosts
 }

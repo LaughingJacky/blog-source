@@ -13,7 +13,8 @@
       "env": {
         "API_BASE_URL": "@api_base_url",
         "API_SPACE_ID": "@api_space_id",
-        "API_TOKEN": "@api_token"
+        "API_TOKEN": "@api_token",
+        "HOST_SERVER": "now"
       }
     }
   }

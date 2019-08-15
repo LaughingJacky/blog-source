@@ -21,7 +21,7 @@ module.exports = {
   siteMetadata: {
     title: '王晓博 - 银河系漫游指南',
     author: 'Shawb Wong',
-    siteUrl: 'https://laughingjacky.netlify.com',
+    siteUrl: process.env.HOST_SERVER === 'now' ? 'https://shawb-wong.now.sh' : 'https://laughingjacky.netlify.com',
     description: '如果这个博客好久不更新了,说明我更浑浑噩噩了',
   },
   pathPrefix: '/',
