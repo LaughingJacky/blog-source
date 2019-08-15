@@ -25,8 +25,8 @@ class BlogPostTemplate extends Component {
       id = md5(content.title)
     }
     const gitalk = new Gitalk({
-      clientID: '7d15c5c496b35e601dae',
-      clientSecret: '25fb2be35286f43cd6e59167fcd2b98c2dc5500f',
+      clientID: GITALK_ID,
+      clientSecret: GITALK_SECRET,
       repo: 'gitalk',
       owner: 'LaughingJacky',
       admin: ['LaughingJacky'],
