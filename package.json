@@ -22,7 +22,7 @@
     "gatsby-plugin-sitemap": "^2.0.3",
     "gatsby-source-filesystem": "^2.0.12",
     "gitalk": "^1.4.0",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^9.15.9",
     "lozad": "^1.6.0",
     "md5": "^2.2.1",
     "node-sass": "^4.9.3",

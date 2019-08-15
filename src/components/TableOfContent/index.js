@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './toc.scss'
 
-const TableItem = ({ url, name }) => (
-  <li>
+const TableItem = ({ level, url, name }) => (
+  <li className={[3, 4].indexOf(level) > -1 ? 'sub-toc' : ''}>
     <a
       href={url}
       data-scroll
@@ -20,7 +20,7 @@ TableItem.propTypes = {
 
 const Table = ({ items }) => (
   <ul>
-    {items.map(item => <TableItem url={`#${item}`} name={item} key={item} />)}
+    {items.map(item => <TableItem level={item.l} url={`#${item.id}`} name={item.id} key={item.id} />)}
   </ul>
 )
 

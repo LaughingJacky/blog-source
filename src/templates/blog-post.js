@@ -96,7 +96,10 @@ export const pageQuery = graphql`
           title
           publishDate(formatString: "MMMM Do, YYYY")
           tags
-          toc
+          toc {
+            id,
+            l
+          }
           description
           headImg
           html

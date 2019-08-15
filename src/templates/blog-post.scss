@@ -68,6 +68,19 @@
     margin: 0 2em;
     .main {
       width: 80%;
+      padding-right: 20px;
+      strong {
+        color: #0089e0;
+      }
+      img {
+        width: 100%;
+      }
+      li > p {
+        text-indent: 0;
+      }
+      p {
+        text-indent: 2em;
+      }
     }
   }
 }

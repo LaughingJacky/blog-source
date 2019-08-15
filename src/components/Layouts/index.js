@@ -64,7 +64,7 @@ class Template extends React.Component {
 }
 
 Template.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.object,
 }
 
 export default Template

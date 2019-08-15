@@ -14,7 +14,10 @@ $black: #404040;
 
     li {
       list-style-type: none;
-
+      &.sub-toc::before {
+        content: '-';
+        padding-right: 1em;
+      }
       p {
         margin-bottom: 0;
       }

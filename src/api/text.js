@@ -40,9 +40,9 @@ const getContent = (mdFile) => {
   })
 
   md.renderer.rules.heading_open = (tokens, idx) => {
-    const id = extractId(tokens[idx + 1].content)
-    toc.push(id)
-    return `<h${tokens[idx].hLevel} id=${id}>`
+    const id = extractId(tokens[idx + 1].content);
+    toc.push({id, l: tokens[idx].hLevel})
+    return `<h${tokens[idx].hLevel} id=${id}>`;
   }
 
   const html = md.render(mdFile)

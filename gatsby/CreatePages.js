@@ -49,7 +49,6 @@ module.exports = ({ graphql, actions }) => {
 
       posts.map(({ node }, index) => {
         const { publishDate, title } = node
-        console.log(publishDate);
         const date = dayjs(publishDate).utcOffset(8).format('YYYY/MM/DD')
         // const postPath = slug === 'about' ? slug : `${date}/${title}`
         return createPage({
