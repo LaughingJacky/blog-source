@@ -8,7 +8,7 @@ import { isBrowser, getUrl } from '../api'
 import Pagination from '../components/Pagination/index'
 import Layout from '../components/Layouts/index'
 
-const BlogList = ({ data = {} }) => (
+const BlogList = ({ data = {}, pageContext }) => (
   <Layout>
     <div className="page-blog-list">
       <Helmet>
@@ -58,7 +58,7 @@ const BlogList = ({ data = {} }) => (
             })}
           </div>
         </section>
-        <Pagination pathname={isBrowser() ? window.location.pathname : ''} />
+        <Pagination pageNum={pageContext.pagesLength} pathname={isBrowser() ? window.location.pathname : ''} />
       </div>
     </div>
   </Layout>

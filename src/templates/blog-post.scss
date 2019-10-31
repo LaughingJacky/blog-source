@@ -65,7 +65,8 @@
   .container {
     display: flex;
     padding-top: 1em;
-    margin: 0 2em;
+    margin: 0 auto;
+    max-width: 65em;
     .main {
       width: 80%;
       padding-right: 20px;
@@ -73,10 +74,8 @@
         color: #0089e0;
       }
       img {
-        width: 100%;
-      }
-      li > p {
-        text-indent: 0;
+        max-width: 100%;
+        margin-left: 2em;
       }
       p {
         text-indent: 2em;
@@ -91,7 +90,7 @@
   // @include vendor('align-items', 'center');
   @include vendor('background-image', 'url("../images/banner.jpg")');
   @include vendor('display', 'flex');
-  @include padding(4em, 0, (1em, 0, 0, 0));
+  @include padding(4em, 0);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

@@ -8,6 +8,7 @@ $black: #404040;
   border-left: lighten(#034378, 10%) 3px solid;
   padding-left: .5em;
   ul {
+    text-indent: 0;
     padding-left: 8px;
     position: sticky; // Magic, please check MDN for more information 26-11-2017
     top: 100px;

@@ -9,6 +9,7 @@ const beautifyCode = (code, language = 'javascript') => {
   })
   // Check whether the given language is valid for highlight.js.
   const validLang = !!(language && hljs.getLanguage(language))
+
   // Highlight only if the language is valid.
   const highlighted = validLang ? hljs.highlight(language, code).value : code
   // Render the highlighted code with `hljs` class.

@@ -1,6 +1,6 @@
 module.exports = {
   blogPostCfg: {
-    maxPages: 2,
+    maxPages: 5,
     pageBufferSize: 1,
   },
 }

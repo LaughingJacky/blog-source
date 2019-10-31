@@ -22,7 +22,7 @@ const Head = () => (
     <link rel="stylesheet" href={withPrefix('skel.css')} />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/gruvbox-dark.min.css"
     />
   </Helmet>
 )

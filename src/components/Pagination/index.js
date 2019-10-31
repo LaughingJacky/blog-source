@@ -8,8 +8,7 @@ import {
 
 const PageItem = ({ href, text, curPage }) => <li><Link className={`page ${curPage === text && 'active'}`} href={href} to={href}>{text}</Link></li>
 
-const { maxPages } = blogPostCfg
-const Pagination = ({ pathname }) => (
+const Pagination = ({ pathname, pageNum }) => (
   <ul className="actions fit pagination">
     <li>
       <span
@@ -20,16 +19,16 @@ const Pagination = ({ pathname }) => (
       </span>
     </li>
     {
-      maxPages < 5
-        ? simplePages(maxPages).map((_, i) => <PageItem href={_} text={i + 1} curPage={getPageNum(pathname)} key={_} />)
+      pageNum < 5
+        ? simplePages(pageNum).map((_, i) => <PageItem href={_} text={i + 1} curPage={getPageNum(pathname)} key={_} />)
         : complexPages(getPageNum(pathname), blogPostCfg).map((_) => {
           return _ === -1 ? <li key={_}><span>&hellip;</span></li> : <PageItem href={_} text={getPageNum(_)} curPage={getPageNum(pathname)} key={_} />
         })
     }
     <li>
       <span
-        className={getPageNum(pathname) === maxPages ? 'button disabled' : 'button'}
-        onClick={() => addOnePage(getPageNum(pathname), maxPages)}
+        className={getPageNum(pathname) === pageNum ? 'button disabled' : 'button'}
+        onClick={() => addOnePage(getPageNum(pathname), pageNum)}
       >
         Next
       </span>

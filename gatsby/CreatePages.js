@@ -40,6 +40,7 @@ module.exports = ({ graphql, actions }) => {
           path: `blogList/${index + 1}`,
           component: path.resolve('./src/templates/blog-list.js'),
           context: {
+            pagesLength: pages, 
             // Data passed to context is available in page queries as GraphQL variables.
             limit: blogPostCfg.maxPages,
             skip: index * blogPostCfg.maxPages,
