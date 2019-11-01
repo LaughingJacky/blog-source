@@ -11,16 +11,12 @@ import Layout from '../components/Layouts/index'
 const BlogList = ({ data = {}, pageContext }) => (
   <Layout>
     <div className="page-blog-list">
-      <Helmet>
-        <title>博客列表</title>
-        <meta name="description" content="Generic Page" />
-      </Helmet>
-
+      <Helmet title="文章列表" />
       <div id="main" className="alt">
         <section id="one">
           <div className="inner">
             <header className="major">
-              <h1>博客列表</h1>
+              <h1>文章列表</h1>
             </header>
             {data.allContetfulBlogPost.edges.map(({ node }) => {
               const {

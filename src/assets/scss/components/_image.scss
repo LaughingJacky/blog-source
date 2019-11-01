@@ -59,4 +59,8 @@
 				margin: (_size(element-margin) * 0.75) 0;
 			}
 		}
-	}
+    }
+    
+    img[alt=size200] {
+        width: 200px;
+    }

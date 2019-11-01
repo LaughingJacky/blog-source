@@ -39,6 +39,7 @@ class HomeIndex extends React.Component {
         <Helmet>
           <title>{siteTitle}</title>
           <meta name="description" content={siteDescription} />
+          <meta name="keywords" content={siteDescription} />
         </Helmet>
 
         <Banner />
@@ -47,7 +48,7 @@ class HomeIndex extends React.Component {
           <section id="one" className="tiles">
             <article style={{ backgroundImage: `url(${pic04})` }}>
               <header className="major">
-                <h3>博客列表</h3>
+                <h3>文章列表</h3>
               </header>
               <Link to="/blogList/1" className="link primary" />
             </article>
@@ -70,29 +71,6 @@ class HomeIndex extends React.Component {
               </article>
             ))}
           </section>
-          {/* <section id="two">
-            <div className="inner">
-              <header className="major">
-                <h2>Massa libero</h2>
-              </header>
-              <p>
-                Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-                libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
-                Pellentesque condimentum sem. In efficitur ligula tate urna.
-                Maecenas laoreet massa vel lacinia pellentesque lorem ipsum
-                dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et
-                sagittis libero. Mauris aliquet magna magna sed nunc rhoncus
-                amet pharetra et feugiat tempus.
-              </p>
-              <ul className="actions">
-                <li>
-                  <Link to="/landing" className="button next">
-                    Get Started
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </section> */}
         </div>
         <div id="gitalk-container" />
       </Layout>
