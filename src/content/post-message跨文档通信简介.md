@@ -10,7 +10,8 @@ description: >-
 tags:
   - postMessage
   - Web Worker
-headerImage: 'blob:https://laughingjacky.netlify.com/a047cf0b-4332-44cf-9e39-a5caf4135759'
+headerImage: >-
+  https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/broadcastchannel_zpsimqib898.jpeg
 templateKey: blog-post
 ---
 ## 概述
