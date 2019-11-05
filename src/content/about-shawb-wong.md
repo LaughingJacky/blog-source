@@ -1,5 +1,5 @@
 ---
-id: 7d15c5c496b35e601dae
+id: ''
 slug: /
 title: About Shawb Wong
 date: 2019-02-01T08:21:22.195Z
