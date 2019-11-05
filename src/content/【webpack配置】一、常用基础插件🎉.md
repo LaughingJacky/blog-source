@@ -1,4 +1,5 @@
 ---
+slug: /
 title: "【webpack配置】一、常用基础插件\U0001F389"
 date: 2019-08-08T08:32:38.416Z
 description: |-
