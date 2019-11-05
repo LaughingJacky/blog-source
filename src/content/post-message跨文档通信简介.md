@@ -1,6 +1,6 @@
 ---
 id: 7d15c5c496b35e601dae
-slug: ' '
+slug: yyy-mm-dd-title
 title: postMessage跨文档通信简介
 date: 2018-11-15T06:11:26.077Z
 description: >-
