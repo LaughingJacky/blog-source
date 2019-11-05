@@ -65,10 +65,7 @@ const HomeIndex = ({ data }) => {
                         </header>
                         <Link to="/tags" className="link primary" />
                     </article>
-                    {latestPosts.map(({ node }) => {
-                        console.log(node);
-                        return <Article key={node.id} slug={node.fields.slug} data={node.frontmatter} />
-                    })}
+                    {latestPosts.map(({ node }) => <Article key={node.id} slug={node.fields.slug} data={node.frontmatter} />)}
                 </section>
             </div>
             <div id="gitalk-container" />

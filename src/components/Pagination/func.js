@@ -2,10 +2,10 @@ import { push } from 'gatsby-link'
 
 const parsePageUrl = (index) => {
   if (index > 0) {
-    push(`/blogList/${index}`)
+    push(`/blog-list/${index}`)
   }
   if (index === 0) {
-    push('/blogList/1')
+    push('/blog-list/1')
   }
   return -1
 }
@@ -27,7 +27,7 @@ const addOnePage = (curPage, maxPages) => {
 
 const getPageNum = pathname => +pathname.split('/')[2]
 
-const simplePages = maxPages => new Array(maxPages).fill().map((_, index) => `/blogList/${index + 1}`)
+const simplePages = maxPages => new Array(maxPages).fill().map((_, index) => `/blog-list/${index + 1}`)
 
 const complexPages = (curPage, cfg) => {
   let pagesArr = []
@@ -48,26 +48,26 @@ const complexPages = (curPage, cfg) => {
   // -1 is ... flag
   if (curLeft - 1 > 1) {
     // 显示第一页码和...
-    const tempArr = [`/blogList/${1}`, -1]
+    const tempArr = [`/blog-list/${1}`, -1]
 
     // 显示当前页码段
     for (let i = curLeft; i <= curRight; i += 1) {
-      tempArr.push(`/blogList/${i}`)
+      tempArr.push(`/blog-list/${i}`)
     }
     [].push.apply(pagesArr, tempArr)
   } else {
     // 第一页码和当前段合并
     for (let i = 1; i <= curRight; i += 1) {
-      pagesArr.push(`/blogList/${i}`)
+      pagesArr.push(`/blog-list/${i}`)
     }
   }
   // right arr
   if (maxPages - 1 > curRight) {
     // 显示最后页码和...
-    [].push.apply(pagesArr, [-1, `/blogList/${maxPages}`])
+    [].push.apply(pagesArr, [-1, `/blog-list/${maxPages}`])
   } else if (maxPages === curRight + 1) {
     // 最后页码和当前段链接
-    pagesArr.push(`/blogList/${maxPages}`)
+    pagesArr.push(`/blog-list/${maxPages}`)
   }
   return pagesArr
 }

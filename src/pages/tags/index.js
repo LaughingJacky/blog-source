@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import Link from 'gatsby-link';
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
@@ -23,25 +22,20 @@ Item.propTypes = {
 }
 
 
-const TagBlock = ({ tag = 'tag', articles = [], isActive = false }) => (
+const TagBlock = ({ tag = 'tag', articles = [], hash }) => (
     <div className="tag-block" id={tag}>
         <h3 style={{
-                color: isActive ? '#77d7b9' : '#999',
+                color: decodeURI(hash) === `#${tag}` ? '#77d7b9' : '#999',
             }}>
-            {tag}:
+            {tag}
         </h3>
         <ol>
-            {articles.map(a => {
-                console.log(a);
-                return (
-                    <Item
-                        url={getUrl(a.publishDate, a.slug)}
-                        title={a.title}
-                        publishDate={a.formattedDate}
-                        key={a.title}
-                    />
-                )
-            })}
+            {articles.map(a => <Item
+                url={getUrl(a.publishDate, a.slug)}
+                title={a.title}
+                publishDate={a.formattedDate}
+                key={a.title}
+            />)}
         </ol>
     </div>
 )
@@ -49,11 +43,12 @@ const TagBlock = ({ tag = 'tag', articles = [], isActive = false }) => (
 TagBlock.propTypes = {
     tag: PropTypes.string.isRequired,
     articles: PropTypes.array.isRequired,
-    isActive: PropTypes.bool.isRequired,
+    hash: PropTypes.string.isRequired,
 }
 
 const TagPage = ({data, location}) => {
     const [tagClassify, setTagClassify] = useState({});
+    const [hash, setHash] = useState(location.hash);
     useEffect(() => {
         const tCfy = {} // tagsClassify
         const { edges } = data.tags
@@ -74,7 +69,6 @@ const TagPage = ({data, location}) => {
         setTagClassify(tCfy);
     }, [])
     const tags = Object.keys(tagClassify).sort()
-    console.log(tags);
     return (
         <Layout>
             <div id="main" className="tag-page alt">
@@ -99,26 +93,27 @@ const TagPage = ({data, location}) => {
                     <div className="inner">
                         <header className="major">
                             <h1>
-                                文章分类
+                                文章分类{hash}
                                 <span className="tips">按标签分类</span>
                             </h1>
                             <div className="tag-list">
                                 {tags.map(item => (
-                                    <Tag name={item} count={tagClassify[item].length} key={item} />
+                                    <Tag onClick={() => {
+                                        setHash(`#${item}`)
+                                    }} name={item} count={tagClassify[item].length} key={item} />
                                 ))}
                             </div>
                         </header>
                     </div>
                 </section>
                 <div className="content">
-                    {tags.map(t => (
-                        <TagBlock
+                    {tags.map(t => <TagBlock
+                            hash={hash}
                             tag={t}
                             articles={tagClassify[t].filter((v, i, a) => a.indexOf(v) === i)}
-                            isActive={decodeURI(location.hash) === `#${t}`}
                             key={t}
                         />
-                    ))}
+                    )}
                 </div>
             </div>
         </Layout>

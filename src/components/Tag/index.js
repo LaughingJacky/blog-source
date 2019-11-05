@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Tag = ({ name, count }) => (
-  <a href={`/tags#${name}`} key={name} className="header-tag">{name} {count || ''}</a>
+const Tag = ({ name, count, onClick }) => (
+  <a onClick={onClick} href={`/tags#${name}`} key={name} className="header-tag">{name} {count || ''}</a>
 )
 
 Tag.propTypes = {

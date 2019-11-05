@@ -5,7 +5,6 @@ import './toc.scss'
 const TableOfContent = ({ slug, toc }) => {
     const re = new RegExp(`href="`, 'g');
     const tocHTML = toc.replace(re, 'href=".');
-    console.log(tocHTML);
     return (
         <div className="toc-container">
             <div className="post-toc"

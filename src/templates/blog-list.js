@@ -52,7 +52,7 @@ const BlogList = ({pageContext}) => <Layout>
                     })}
                 </div>
             </section>
-            <Pagination pageNum={pageContext.additionalContext.pagesLength} pathname={isBrowser() ? window.location.pathname : ''} />
+            <Pagination articleNum={pageContext.additionalContext.pagesLength} pathname={isBrowser() ? window.location.pathname : ''} />
         </div>
     </div>
 </Layout>

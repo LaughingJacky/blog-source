@@ -42,7 +42,7 @@ const BlogPostTemplate = ({location, data}) => {
 
     return <Layout>
         <div className="blog-post">
-            <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+            <Helmet title={`${title} | ${siteTitle}`} />
             <section
                 id="banner"
                 style={{
@@ -112,6 +112,12 @@ export const pageQuery = graphql`
                 next {
                     ...post
                 }
+            }
+        }
+        site {
+            siteMetadata {
+                title
+                description
             }
         }
     }
