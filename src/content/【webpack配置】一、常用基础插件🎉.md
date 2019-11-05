@@ -8,7 +8,7 @@ tags:
   - webpack
   - 工程化
 headerImage: >-
-  https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/webpack-how-it-works_zpsu9wcudnq.png
+  https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/webpack-how-it-works_zpsu9wcudnq.png
 templateKey: blog-post
 ---
 ## 初始化目录
