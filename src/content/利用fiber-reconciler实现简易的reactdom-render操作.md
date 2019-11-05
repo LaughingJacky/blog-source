@@ -1,4 +1,6 @@
 ---
+id: 74bbb2a4a5074a0aa182511e12c2d7ef
+slug: /
 title: 利用fiber-reconciler实现简易的ReactDOM render操作
 date: 2019-10-31T08:49:34.718Z
 description: |-
