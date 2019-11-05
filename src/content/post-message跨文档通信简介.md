@@ -1,5 +1,5 @@
 ---
-id: 7d15c5c496b35e601dae
+id: e25da473f44ea93d91d5a93cda0fcd61
 slug: /
 title: postMessage跨文档通信简介
 date: 2018-11-15T06:11:26.077Z
