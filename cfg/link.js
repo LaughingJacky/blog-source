@@ -10,7 +10,7 @@ const menuList = [
     text: 'Tags',
   },
   {
-    href: '/blogList/1',
+    href: '/blog-list/1',
     text: 'BlogList',
   },
   {

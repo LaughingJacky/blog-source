@@ -1,67 +1,76 @@
-const path = require('path')
+const path = require('path');
 const dayjs = require('dayjs')
-const dayjsPluginUTC = require('dayjs-plugin-utc').default;
+const createPaginatedPages = require('gatsby-paginate');
 
-dayjs.extend(dayjsPluginUTC)
-
-const { redirectors = [], blogPostCfg } = require('../cfg')
-
-module.exports = ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions
-
-  redirectors.forEach(({ fromPath, toPath = '/' }) => {
-    createRedirect({ fromPath, redirectInBrowser: true, toPath })
-    // Uncomment next line to see forEach in action during build
-    console.log(`Redirecting: ${fromPath} To: ${toPath}`)
-  })
-
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allContetfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-          edges {
-            node {
-              title
-              publishDate
+module.exports = ({actions, graphql}) => {
+    const {createPage} = actions;
+    return graphql(`
+        {
+            allMarkdownRemark(
+                limit: 1000,
+                sort: { order: DESC, fields: frontmatter___date}
+            ) {
+                edges {
+                    node {
+                        id
+                        fields {
+                            slug
+                        }
+                        frontmatter {
+                            tags
+                            templateKey
+                            slug
+                            id
+                            title
+                            url: slug
+                            date
+                            tags
+                            description
+                            headerImage
+                        }
+                    }
+                }
             }
-          }
         }
-      }
-    `).then((result) => {
-      if (result.error) {
-        console.error(result.error)
-        return reject()
-      }
-      const posts = result.data.allContetfulBlogPost.edges
-      const pages = Math.ceil(posts.length / blogPostCfg.maxPages)
+    `).then(result => {
+        if (result.errors) {
+            return Promise.reject(result.errors);
+        }
 
-      for (let index = 0; index < pages; index += 1) {
-        createPage({
-          path: `blogList/${index + 1}`,
-          component: path.resolve('./src/templates/blog-list.js'),
-          context: {
-            pagesLength: pages, 
-            // Data passed to context is available in page queries as GraphQL variables.
-            limit: blogPostCfg.maxPages,
-            skip: index * blogPostCfg.maxPages,
-          },
-        })
-      }
+        const {edges = []} = result.data.allMarkdownRemark;
 
-      posts.map(({ node }, index) => {
-        const { publishDate, title } = node
-        const date = dayjs(publishDate).utcOffset(8).format('YYYY/MM/DD')
-        // const postPath = slug === 'about' ? slug : `${date}/${title}`
-        return createPage({
-          path: `${date}/${title}`,
-          component: path.resolve('./src/templates/blog-post.js'),
-          context: {
-            // Data passed to context is available in page queries as GraphQL variables.
-            index,
-          },
-        })
-      })
-      return resolve()
-    })
-  })
+        const tagSet = new Set();
+
+        createPaginatedPages({
+            edges,
+            createPage,
+            context: {
+                pagesLength: edges.length
+            },
+            pageTemplate: 'src/templates/blog-list.js',
+            pathPrefix: 'blog-list',
+            buildPath: (index, pathPrefix) => `${pathPrefix}/${index + 1}`
+        });
+
+        edges.forEach(({node}, index) => {
+            const {id, frontmatter, fields} = node;
+            const {tags, templateKey, date: publishDate, title} = frontmatter;
+            if (tags) {
+                tags.forEach(item => tagSet.add(item));
+            }
+
+            const datePrefix = dayjs(publishDate).format('YYYY/MM/DD')
+
+            const component = templateKey || 'blog-post';
+            const postPath = `/${datePrefix}${fields.slug}`;
+            createPage({
+                path: postPath,
+                component: path.resolve(`src/templates/${String(component)}.js`),
+                context: {
+                    id,
+                    index
+                }
+            });
+        });
+    });
 }
