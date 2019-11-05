@@ -1,7 +1,7 @@
 ---
 id: 7d15c5c496b35e601dae
 slug: ''
-title: post Message跨文档通信简介
+title: postMessage跨文档通信简介
 date: 2018-11-15T06:11:26.077Z
 description: >-
   window.postMessage()
