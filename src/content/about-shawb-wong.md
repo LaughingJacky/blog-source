@@ -1,4 +1,6 @@
 ---
+id: 7d15c5c496b35e601dae
+slug: /
 title: About Shawb Wong
 date: 2019-02-01T08:21:22.195Z
 description: '嗨, 小伙伴, 你终于发现这个有趣的地方啦!'
