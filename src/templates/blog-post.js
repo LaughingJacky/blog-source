@@ -1,115 +1,118 @@
-import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import React, {useEffect} from 'react'
+import { navigate, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 import md5 from 'md5'
-import dayjs from 'dayjs'
+
+import {isBrowser} from '../api';
 import Layout from '../components/Layouts/index'
-import { getPath } from '../api'
 import Tag from '../components/Tag/index'
 import TableOfContent from '../components/TableOfContent/index'
 
 // Prevent webpack window problem
-const isBrowser = typeof window !== 'undefined'
 const Gitalk = isBrowser ? require('gitalk') : undefined
 
-class BlogPostTemplate extends Component {
-  componentDidMount() {
-    const content = get(this.props, 'data.content.edges[0].node')
-    const issueDate = '2018-08-29'
-    let id = getPath()
-    let title = document ? document.title : ''
-    if (dayjs(content.createDate).isAfter(issueDate)) {
-      title = `${content.title} | Shawb's Blog`
-      id = md5(content.title)
-    }
-    const gitalk = new Gitalk({
-      clientID: GITALK_ID,
-      clientSecret: GITALK_SECRET,
-      repo: 'gitalk',
-      owner: 'LaughingJacky',
-      admin: ['LaughingJacky'],
-      distractionFreeMode: true,
-      title,
-      id,
-    })
-    gitalk.render('gitalk-container')
-  }
+const BlogPostTemplate = ({location, data}) => {
+    useEffect(() => {
+        if (location.pathname.slice(-1) !== '/') {
+            navigate(`${location.pathname}/${location.hash}`);
+        }
+        else {
+            const content = get(data, 'content.edges[0].node.frontmatter')
+            const gitalk = new Gitalk({
+                clientID: GITALK_ID,
+                clientSecret: GITALK_SECRET,
+                repo: 'gitalk',
+                owner: 'LaughingJacky',
+                admin: ['LaughingJacky'],
+                distractionFreeMode: true,
+                title: `${content.title} | Shawb's Blog`,
+                id: md5(content.title)
+            })
+            gitalk.render('gitalk-container')
+        }
+    }, []);
 
-  render() {
-    const post = get(this.props, 'data.content.edges[0].node')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const post = get(data, 'content.edges[0].node')
+    const siteTitle = get(data, 'site.siteMetadata.title')
     const {
-      tags, publishDate, title, description, html, headImg, toc,
-    } = post
-    return (
-      <Layout>
+      tags, date: publishDate, title, description, headerImage
+    } = post.frontmatter
+
+    return <Layout>
         <div className="blog-post">
-          <Helmet title={`${post.title} | ${siteTitle}`} />
-          <section
-            id="banner"
-            style={{
-              backgroundImage: `url(${headImg})`,
-            }}
-          >
-            <div className="inner">
-              <header className="major">
-                <h1>{title}</h1>
-                <p className="date">{publishDate}</p>
-              </header>
-              <div className="content">
-                <p>{description}</p>
-                <div className="tags">
-                  {
-                    tags && tags.map(tag => <Tag name={tag} key={tag} />)
-                  }
+            <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+            <section
+                id="banner"
+                style={{
+                    backgroundImage: `url(${headerImage})`,
+                }}
+            >
+                <div className="inner">
+                    <header className="major">
+                        <h1>{title}</h1>
+                        <p className="date">{publishDate}</p>
+                    </header>
+                    <div className="content">
+                        <p>{description}</p>
+                        <div className="tags">
+                            {
+                                tags && tags.map(tag => <Tag name={tag} key={tag} />)
+                            }
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </section>
+            <div className="container">
+                <div className="main" dangerouslySetInnerHTML={{ __html: post.html }} />
+                <TableOfContent slug={post.fields.slug} toc={post.tableOfContents} />
             </div>
-          </section>
-          <div className="container">
-            <div className="main" dangerouslySetInnerHTML={{ __html: html }} />
-            <TableOfContent toc={toc} />
-          </div>
-          <hr />
-          <div id="gitalk-container" />
+            <hr />
+            <div id="gitalk-container" />
         </div>
-      </Layout>
-    )
-  }
+    </Layout>
 }
 
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByIndex(
-    $index: Int
-  ) {
-    content: allContetfulBlogPost (
-      sort: { fields: publishDate, order: DESC }
-      limit: 1
-      skip: $index
-    ) {
-      edges {
-        node {
-          title
-          publishDate(formatString: "MMMM Do, YYYY")
-          tags
-          toc {
-            id,
-            l
-          }
-          description
-          headImg
-          html
+    fragment post on MarkdownRemark {
+        frontmatter {
+            id
+            description
+            title
+            slug
+            date(formatString: "YYYY年MM月DD日")
+            tags
+            headerImage
         }
-      }
     }
-    site {
-      siteMetadata {
-        title
-      }
+    query BlogPostQuery($index: Int) {
+        content: allMarkdownRemark(
+            sort: { order: DESC, fields: frontmatter___date }
+            skip: $index
+            limit: 1
+        ) {
+            edges {
+                node {
+                    id
+                    html
+                    fields {
+                        slug
+                    }
+                    tableOfContents(maxDepth: 6, pathToSlugField: "frontmatter.slug")
+                    ...post
+                }
+
+                previous {
+                    ...post
+                }
+
+                next {
+                    ...post
+                }
+            }
+        }
     }
-  }
 `

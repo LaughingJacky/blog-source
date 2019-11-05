@@ -4,7 +4,7 @@ $black: #404040;
 .toc-container {
   margin-top: 1em;
   list-style: none;
-  color: darkgrey;
+  color: $blue;
   border-left: lighten(#034378, 10%) 3px solid;
   padding-left: .5em;
   ul {
@@ -15,10 +15,6 @@ $black: #404040;
 
     li {
       list-style-type: none;
-      &.sub-toc::before {
-        content: '-';
-        padding-right: 1em;
-      }
       p {
         margin-bottom: 0;
       }
@@ -34,9 +30,11 @@ $black: #404040;
     }
     // Level 3
     ul {
+      margin-bottom: 0;
+      li::before {
+        content: '-';
+      }
       li a {
-        color: $black;
-
         &:hover {
           color: lighten($black, 10%);
         }
