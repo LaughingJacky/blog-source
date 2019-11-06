@@ -39,6 +39,7 @@ const Pagination = ({ pathname, articleNum }) => {
 
 Pagination.propTypes = {
     pathname: PropTypes.string.isRequired,
+    articleNum: PropTypes.number.isRequired
 }
 
 PageItem.propTypes = {

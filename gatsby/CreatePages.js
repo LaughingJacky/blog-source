@@ -45,7 +45,7 @@ module.exports = ({actions, graphql}) => {
             edges,
             createPage,
             context: {
-                articleLength: edges.length
+                articleNum: edges.length
             },
             pageTemplate: 'src/templates/blog-list.js',
             pathPrefix: 'blog-list',

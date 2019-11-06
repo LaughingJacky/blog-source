@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import PropTypes from 'prop-types'
 import { getUrl } from '../../api'
 
@@ -93,7 +93,7 @@ const TagPage = ({data, location}) => {
                     <div className="inner">
                         <header className="major">
                             <h1>
-                                文章分类{hash}
+                                文章分类
                                 <span className="tips">按标签分类</span>
                             </h1>
                             <div className="tag-list">

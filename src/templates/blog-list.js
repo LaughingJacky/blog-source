@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs';
 import { isBrowser, getUrl } from '../api'
@@ -52,7 +52,7 @@ const BlogList = ({pageContext}) => <Layout>
                     })}
                 </div>
             </section>
-            <Pagination articleNum={pageContext.additionalContext.pagesLength} pathname={isBrowser() ? window.location.pathname : ''} />
+            <Pagination articleNum={pageContext.additionalContext.articleNum} pathname={isBrowser() ? window.location.pathname : ''} />
         </div>
     </div>
 </Layout>

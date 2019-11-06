@@ -6498,7 +6498,7 @@ execall@^1.0.0:
   dependencies:
     clone-regexp "^1.0.0"
 
-exenv@^1.2.0, exenv@^1.2.1:
+exenv@^1.2.0:
   version "1.2.2"
   resolved "http://registry.npm.taobao.org/exenv/download/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
   integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
@@ -7402,12 +7402,12 @@ gatsby-plugin-page-creator@^2.1.28:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-react-helmet@^3.0.5:
-  version "3.0.6"
-  resolved "http://registry.npm.taobao.org/gatsby-plugin-react-helmet/download/gatsby-plugin-react-helmet-3.0.6.tgz#552d04e4e3a99562bae950a8cdfab672987158fb"
-  integrity sha1-VS0E5OOplWK66VCozfq2cphxWPs=
+gatsby-plugin-react-helmet@^3.1.13:
+  version "3.1.13"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-react-helmet/download/gatsby-plugin-react-helmet-3.1.13.tgz#0ba9e2e902ae490b45c898cffece6e17689da9ee"
+  integrity sha1-C6ni6QKuSQtFyJjP/s5uF2idqe4=
   dependencies:
-    "@babel/runtime" "^7.0.0"
+    "@babel/runtime" "^7.6.3"
 
 gatsby-plugin-sass@^2.0.7:
   version "2.0.10"
@@ -13037,6 +13037,11 @@ react-error-overlay@^5.1.0:
   resolved "http://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-5.1.3.tgz#16fcbde75ed4dc6161dc6dc959b48e92c6ffa9ad"
   integrity sha1-Fvy9517U3GFh3G3JWbSOksb/qa0=
 
+react-fast-compare@^2.0.2:
+  version "2.0.4"
+  resolved "https://registry.npm.taobao.org/react-fast-compare/download/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
+  integrity sha1-6EtNRVsP7BE+BALDKTUnFRlvgfk=
+
 react-flip-move@2.9.14:
   version "2.9.14"
   resolved "http://registry.npm.taobao.org/react-flip-move/download/react-flip-move-2.9.14.tgz#3b60e44493a4bbe115a8c3d678b844776bbab453"
@@ -13057,14 +13062,14 @@ react-ga@^2.5.3:
   resolved "http://registry.npm.taobao.org/react-ga/download/react-ga-2.5.7.tgz#1c80a289004bf84f84c26d46f3a6a6513081bf2e"
   integrity sha1-HICiiQBL+E+Ewm1G86amUTCBvy4=
 
-react-helmet@^5.2.0:
-  version "5.2.0"
-  resolved "http://registry.npm.taobao.org/react-helmet/download/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
-  integrity sha1-qBgR3yExOm1VxfBYxK66XW89l6c=
+react-helmet@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.npm.taobao.org/react-helmet/download/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"
+  integrity sha1-FqcZL90JlR+OD+Iv/Mv5uz5ZH/o=
   dependencies:
-    deep-equal "^1.0.1"
     object-assign "^4.1.1"
     prop-types "^15.5.4"
+    react-fast-compare "^2.0.2"
     react-side-effect "^1.1.0"
 
 react-hot-loader@^4.12.15:
@@ -13133,13 +13138,10 @@ react-redux@^5.0.6:
     react-is "^16.6.0"
     react-lifecycles-compat "^3.0.0"
 
-react-side-effect@^1.1.0:
-  version "1.1.5"
-  resolved "http://registry.npm.taobao.org/react-side-effect/download/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
-  integrity sha1-8mBZ5Q7ZxibZHWYbnzyLs4zQ/y0=
-  dependencies:
-    exenv "^1.2.1"
-    shallowequal "^1.0.1"
+react-side-effect@2.1.0, react-side-effect@^1.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/react-side-effect/download/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
+  integrity sha1-HOSotERRaMSH7STauIZCH3TTgNM=
 
 react-split-pane@^0.1.84:
   version "0.1.85"
@@ -14328,7 +14330,7 @@ shallow-compare@^1.2.2:
   resolved "http://registry.npm.taobao.org/shallow-compare/download/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
   integrity sha1-+keUYnv0VaR8T1aIHYphMtWB/9s=
 
-shallowequal@^1.0.1, shallowequal@^1.1.0:
+shallowequal@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/shallowequal/download/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha1-GI1SHelbkIdAT9TctosT3wrk5/g=

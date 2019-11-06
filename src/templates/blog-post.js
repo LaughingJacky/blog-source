@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { navigate, graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import 'gitalk/dist/gitalk.css'
 import get from 'lodash/get'
 import md5 from 'md5'
@@ -42,7 +42,12 @@ const BlogPostTemplate = ({location, data}) => {
 
     return <Layout>
         <div className="blog-post">
-            <Helmet title={`${title} | ${siteTitle}`} />
+            <Helmet>
+                <title>{`${title} | ${siteTitle}`}</title>
+                <meta name="description" content={description} />
+                <meta name="og:description" content={description} />
+                <meta name="keywords" content={tags} />
+            </Helmet>
             <section
                 id="banner"
                 style={{

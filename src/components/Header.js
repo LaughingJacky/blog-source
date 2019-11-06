@@ -9,9 +9,9 @@ const Header = ({ onToggleMenu }) => (
       <span>Shawb Wong</span>
     </Link>
     <nav>
-      <a className="menu-link" onClick={onToggleMenu} href="javascript:void(0);">
+      <span className="menu-link" onClick={onToggleMenu}>
         Menu
-      </a>
+      </span>
     </nav>
   </header>
 )
