@@ -1,4 +1,5 @@
 ---
+id: d4b8d9c3ddc0e95c88f753df86ba56c7
 slug: /
 title: "【webpack配置】一、常用基础插件\U0001F389"
 date: 2019-08-08T08:32:38.416Z
@@ -90,7 +91,7 @@ module.exports = {
 ```
 
 执行webpack-dev-server，我们将在9000端口看到输出。
-#### split Chunks
+### split Chunks
 我们利用optimization对打包出的main.js进行拆分。
 1. 首先加入runtimeChunk，可以看到有6.12Kb的webpack runtime被提取了出来，这部分代码是webpack用来进行模块解析时所需要的。这样，当我们hash模块变更时，runtime所包含的模块信息清单就会单独更新。
 2. 效果依然不明显，我们接下来配置splitChunks。
@@ -149,7 +150,7 @@ new UglifyJsPlugin({
     }
 })
 ```
-#### dynamic import
+### dynamic import
 让我们添加一个promisePolyfill，并通过一个btn click动态引入它。
 
 ```js
@@ -173,7 +174,7 @@ const Comp = () => {
 其中babel-polyfill的引入是为了支持async/await需要的regeneratorRuntime。webpack使用require.ensure标记异步模块，并通过window.webpackJsonp连接chunk文件。所以当我们调用import函数时，webpack使用一种类似jsonp的方式在文档头部动态添加script标签，再通过webpackJsonpCallback把异步函数加载到主文件供之后调用。
 打开DevTools Network我们可以看到，当我们点击按钮之后，promise脚本才开始下载，并且不会多次重复下载。
 
-#### dll config
+### dll config
 
 dll plugin用于将第三方模块打包到动态链接库中，二次加载时参考dll从打包好的一个js中获得模块。
 1. 我们再写一个webpack配置输出dll缓存文件。
@@ -230,7 +231,7 @@ autoAddDllRes(),
 
 当不使用.cache及dll缓存时，build一次的时间为6000ms左右;使用dll时，二次构建的时间可以提升到3000ms。当然这里我们用到uglifyjs的cache文件夹时，打包速度会达到1000ms的量级，使得dll的配置效果不是那么明显。
 
-#### Tree Shaking
+### Tree Shaking
 Tree Shaking是指webpack利用ES6 import静态编译的特点, 打包时去除无用代码的一种方法。
 1. @babel/preset-env的默认modules为auto，此时若在package.json指定没有sideEffects的话，webpack在production模式自动开启tree-shaking；
 2. 我们这里手动试验一下这个特性，写一个sideCode文件用ES6语法导出一个函数一个无用变量。
