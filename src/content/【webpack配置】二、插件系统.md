@@ -73,14 +73,19 @@ syncLoopHook.call('David', 25);
 下面是webpack的七大模块：
 ![webpack arch](https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/webpack-arch_zpsaossyeof.png)
 
-### Compiler
+### 开机键Compiler
 
 Compiler的作用可以用两行伪代码来表示：
 ```js
 const webpack = require('webpack');
 const compiler = webpack(someConfig);
 ```
-所以它就是webpack的运行时。
+对于插件开发者的你来说，需要从webpack机制/流程/事件发生的时间点来切入，添加你想实现的功能及特性，compiler作为top-level实例，同时也是webpack runtime, 正担任这个角色。正因为它控制着webpack的启动与停止，你可以使用run、emit这些钩子。
+
+### 藏宝图Compilation
+
+compilation作为compiler的产物，描绘了你整个app依赖关系的深度遍历藏宝图，webpack通过compilation掌握你的代码依赖全貌。
+
 
 ## 相关资料
 1. [webpack4核心模块tapable源码解析](https://www.cnblogs.com/tugenhua0707/p/11317557.html)
