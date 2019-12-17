@@ -68,7 +68,9 @@ syncLoopHook.call('David', 25);
 网上介绍这个API的文章很多，在这儿就不赘述了，建议直接看github的[README](https://github.com/webpack/tapable/tree/tapable-1)。
 
 ## webpack工作流
-要写好一个插件，必须了解webpack插件的这些切面是怎样工作的。模块打包器的大致流程是依赖解析➡️模块映射➡️打包，在webpack中，为了使用nodeJS的文件系统，第一个被这样处理的就是[NodeEnvironmentPlugin](https://webpack.js.org/plugins/internal-plugins/#nodeenvironmentplugin)。
+要写好一个插件，必须了解webpack插件的这些切面是如何工作的。
+
+通用模块打包器的大致流程是依赖解析➡️模块映射➡️打包，在webpack中，为了使用nodeJS的文件系统，第一个被这样处理的就是[NodeEnvironmentPlugin](https://webpack.js.org/plugins/internal-plugins/#nodeenvironmentplugin)。
 
 下面是webpack的七大模块：
 ![webpack arch](https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/webpack-arch_zpsaossyeof.png)
@@ -80,25 +82,25 @@ Compiler的作用可以用两行伪代码来表示：
 const webpack = require('webpack');
 const compiler = webpack(someConfig);
 ```
-作为插件开发者的你，需要从webpack机制/流程/事件发生的时间点来切入，添加你想实现的功能及特性，compiler作为top-level实例，同时也是webpack runtime, 正担任这个角色。正因为它控制着webpack的启动与停止，你才能使用run、emit这些钩子。
+作为插件开发者，需要从webpack机制/流程/事件发生的时间点来切入，添加你想实现的功能及特性，compiler作为top-level实例，同时也是webpack runtime, 正担任这个角色。它控制着webpack的启动与停止，使你能用上run、emit这些钩子。
 
 ### 藏宝图Compilation
 
-compilation作为compiler的产物，描绘了你整个app依赖关系的深度遍历藏宝图，webpack通过compilation掌握你的代码依赖全貌。webpack的load, seal, optimize, chunk, hash都在这一阶段完成，具有optimize-modules、seal及optimize-chunk-assets等hook。
+compilation作为compiler的产物，描绘了整个app依赖关系的深度遍历藏宝图，webpack通过compilation掌握你的代码依赖全貌。webpack的load, seal, optimize, chunk, hash都在这一阶段完成，因此具有optimize-modules、seal及optimize-chunk-assets等hook。
 
 ### 寻路resolver
 
-类似于nodejs的resolver处理文件路径，webpack的resolver由(enhanced-resolver)[https://github.com/webpack/enhanced-resolve]创建。我们也可以通过resolveLoader或者自己写的(插件)[https://github.com/shaketbaby/directory-named-webpack-plugin]自定义模块解析策略。
+类似于nodejs的resolver处理文件路径，webpack的resolver由[enhanced-resolver](https://github.com/webpack/enhanced-resolve)创建。我们也可以通过resolveLoader或者自己编写[插件](https://github.com/shaketbaby/directory-named-webpack-plugin)自定义模块解析策略。
 
 ### 同声传译loaders
-在resolve文件依赖进行build过程中，肯定会查询到非JS的文件。这时就需要loader根据ruleSet将!@#$%$^&变成标准模块，加到chunk中。
+在resolve文件依赖进行build过程中，肯定会寻找到非JS的文件。这时就需要loader根据ruleSet将!@#$%$^&变成标准模块，加到chunk中。
 
 ### 模块工厂Module Factory
 ModuleFactory将resolver、loaders和源模块实例零件进行黏合加工，产出模块对象到内存中。
-除了Normal类型之外，Context工厂用于处理上下文的动态依赖。
+除了Normal类型之外，还有ContextFactory用于处理上下文的动态依赖。
 
 ### 寻宝科学家Parser
-AST是计算机与人类的桥梁，Parser是Module与bundle template的桥梁。webpack parser使用acorn实现AST。
+AST是计算机与人类的桥梁，Parser是Module与bundle Template的桥梁。webpack parser使用的是acorn引擎实现AST。
 
 ### 圣诞树的外衣Template
 
@@ -110,7 +112,7 @@ template顾名思义作为文件输出的数据模版，将template subclass组�
 - RuntimeTemplate: 运行时模版
 
 ## 总结
-当我们开启热更新的时候，webpack会按照这种运作机制不断地解析文件、生成依赖图、输出bundle文件。正是因为有基于切面设计的插件系统和基于插件的运作体系，我们才能够持续的添加特性，提升打包效率、增量更新，从而实现科学快速的工程化解决方案。
+当我们开启热更新的时候，webpack会按照这种运作机制不断地解析文件、生成依赖图、输出bundle文件。正是因为webpack采用基于切面设计的插件系统和基于插件的运作体系，我们才能够编写优秀的自定义插件实现增量更新，才能够根据差异性的应用场景持续添加特性，达成科学快速的工程化解决方案。
 
 ## 相关资料
 1. [webpack4核心模块tapable源码解析](https://www.cnblogs.com/tugenhua0707/p/11317557.html)
