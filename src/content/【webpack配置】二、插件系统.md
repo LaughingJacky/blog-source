@@ -4,27 +4,27 @@ title: 【webpack配置】二、插件系统
 date: 2019-12-17T08:46:53.247Z
 description: >-
   Sean
-  Larkin曾在演讲中表示，webpack中80%的部分都是由插件系统完成。随着我们对webpack研究的深入，会发现其内部的每样东西，都被模块化为单一职责的抽象类和工具。
+  Larkin曾在演讲中表示，webpack中80%的部分都是由插件机制完成。随着我们对webpack研究的深入，会发现其内部的每样东西，都被模块化为单一职责的工具抽象类。
 tags:
   - webpack
   - tapable
 headerImage: '  https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/webpacn-series-2-headimage_zps1wcoczne.png'
 templateKey: blog-post
 ---
-webpack本身可以定义为事件驱动的、基于插件的打包器。插件是webpack生态系统的关键拼图，使得社区开发者可以hook到关键事件中、可以侵入到webpack的编译过程的每一切面。
+webpack本身可以定义为事件驱动、基于插件的打包器。插件是webpack生态系统的关键拼图，使得社区开发者可以hook到关键事件中、可以侵入到webpack的编译过程的每一切面。
 
 ## AOP
 
-[AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming)（Aspect-Oriented Programming）：面向切面编程，是对面向对象编程的扩充，在实现对关注点模块化扩展的同时，保证对原系统的低耦合性。即使你没了解过这个概念，在前端开发的工作中，或多或少也有用到这种思想。像表单验证、埋点日志收集、路由钩子、装饰器decorators等等场景。
+[AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming)（Aspect-Oriented Programming）：面向切面编程，是对面向对象编程的扩充，在实现对关注点模块化扩展的同时，保证了与原系统的低耦合性。即使你没了解过这个思想，在日常的开发工作中，像表单验证、埋点日志收集、路由钩子、装饰器decorators等场景，都有这种模式的影子。
 
 webpack的tapable就是遵循AOP模式的一个实现。
 
 ## Tapable
 
-Tapable作为webpack扩展功能的骨架与核心，与Nodejs的EventEmitter类似。扩展tapable的类和对象，我们称之为tapable实例。借助tapable提供的钩子，我们可以进入到编译阶段的每个过程中。
+Tapable作为webpack扩展功能的骨架与核心，与Nodejs的EventEmitter类似。扩展tapable的类和对象，我们称之为tapable实例，即是我们通常所说的插件。借助tapable提供的钩子，我们可以侵入到编译阶段的每个过程中。
 ![Tapable skeleton](https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/tapable-skeleton_zpsbr3gitgy.png)
 
-下面是一个简单的demo👇：
+通过一个简单的demo，看一下Tapable的基本用法👇：
 
 ```js
 // 为了测试拦截器的loop，我们选用loopHook
@@ -63,9 +63,9 @@ syncLoopHook.intercept({
 syncLoopHook.call('David', 25);
 ```
 
-通过控制台的输出，可以看到整个流程为register➡️call➡️loop➡️tap➡️tap callback。
+通过控制台的输出，可以看到Tapable整个流程为register➡️call➡️loop➡️tap➡️tap callback。
 
-在写这篇文章时，发现网上介绍其API的文章很多，这里就不赘述了。建议直接看github的[README](https://github.com/webpack/tapable/tree/tapable-1)。
+网上介绍这个API的文章很多，在这儿就不赘述了，建议直接看github的[README](https://github.com/webpack/tapable/tree/tapable-1)。
 
 ## webpack工作流
 要写好一个插件，必须了解webpack插件的这些切面是怎样工作的。模块打包器的大致流程是依赖解析➡️模块映射➡️打包，在webpack中，为了使用nodeJS的文件系统，第一个被这样处理的就是[NodeEnvironmentPlugin](https://webpack.js.org/plugins/internal-plugins/#nodeenvironmentplugin)。
