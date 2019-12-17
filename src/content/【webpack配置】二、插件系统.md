@@ -80,12 +80,37 @@ Compiler的作用可以用两行伪代码来表示：
 const webpack = require('webpack');
 const compiler = webpack(someConfig);
 ```
-对于插件开发者的你来说，需要从webpack机制/流程/事件发生的时间点来切入，添加你想实现的功能及特性，compiler作为top-level实例，同时也是webpack runtime, 正担任这个角色。正因为它控制着webpack的启动与停止，你可以使用run、emit这些钩子。
+作为插件开发者的你，需要从webpack机制/流程/事件发生的时间点来切入，添加你想实现的功能及特性，compiler作为top-level实例，同时也是webpack runtime, 正担任这个角色。正因为它控制着webpack的启动与停止，你才能使用run、emit这些钩子。
 
 ### 藏宝图Compilation
 
-compilation作为compiler的产物，描绘了你整个app依赖关系的深度遍历藏宝图，webpack通过compilation掌握你的代码依赖全貌。
+compilation作为compiler的产物，描绘了你整个app依赖关系的深度遍历藏宝图，webpack通过compilation掌握你的代码依赖全貌。webpack的load, seal, optimize, chunk, hash都在这一阶段完成，具有optimize-modules、seal及optimize-chunk-assets等hook。
 
+### 寻路resolver
+
+类似于nodejs的resolver处理文件路径，webpack的resolver由(enhanced-resolver)[https://github.com/webpack/enhanced-resolve]创建。我们也可以通过resolveLoader或者自己写的(插件)[https://github.com/shaketbaby/directory-named-webpack-plugin]自定义模块解析策略。
+
+### 同声传译loaders
+在resolve文件依赖进行build过程中，肯定会查询到非JS的文件。这时就需要loader根据ruleSet将!@#$%$^&变成标准模块，加到chunk中。
+
+### 模块工厂Module Factory
+ModuleFactory将resolver、loaders和源模块实例零件进行黏合加工，产出模块对象到内存中。
+除了Normal类型之外，Context工厂用于处理上下文的动态依赖。
+
+### 寻宝科学家Parser
+AST是计算机与人类的桥梁，Parser是Module与bundle template的桥梁。webpack parser使用acorn实现AST。
+
+### 圣诞树的外衣Template
+
+template顾名思义作为文件输出的数据模版，将template subclass组合到一起，生成最后打包文件的框架结构。当然，由于模块类型的不同，template有多种类型，包括:
+- MainTemplate: 运行时bundle的wrapper
+- ChunkTemplate: 控制chunk wrapper的形式和格式
+- ModuleTemplate: 模块模版
+- DependencyTemplate: 依赖模版
+- RuntimeTemplate: 运行时模版
+
+## 总结
+当我们开启热更新的时候，webpack会按照这种运作机制不断地解析文件、生成依赖图、输出bundle文件。正是因为有基于切面设计的插件系统和基于插件的运作体系，我们才能够持续的添加特性，提升打包效率、增量更新，从而实现科学快速的工程化解决方案。
 
 ## 相关资料
 1. [webpack4核心模块tapable源码解析](https://www.cnblogs.com/tugenhua0707/p/11317557.html)
