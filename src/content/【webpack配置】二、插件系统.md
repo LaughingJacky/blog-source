@@ -102,7 +102,11 @@ ModuleFactory将resolver、loaders和源模块实例零件进行黏合加工，�
 ### 寻宝科学家Parser
 AST是计算机与人类的桥梁，Parser是Module与bundle Template的桥梁。webpack parser使用的是acorn引擎实现AST。
 
+![webpack-parser](https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/webpack-parser_zpsx2m3mx4i.jpg)
+
 ### 圣诞树的外衣Template
+
+![webpack-template](https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/webpack-template_zps2ih4abgu.jpg)
 
 template顾名思义作为文件输出的数据模版，将template subclass组合到一起，生成最后打包文件的框架结构。当然，由于模块类型的不同，template有多种类型，包括:
 - MainTemplate: 运行时bundle的wrapper
@@ -115,11 +119,11 @@ template顾名思义作为文件输出的数据模版，将template subclass组�
 当我们开启热更新的时候，webpack会按照这种运作机制不断地解析文件、生成依赖图、输出bundle文件。正是因为webpack采用基于切面设计的插件系统和基于插件的运作体系，我们才能够编写优秀的自定义插件实现增量更新，才能够根据差异性的应用场景持续添加特性，达成科学快速的工程化解决方案。
 
 ## 相关资料
-1. [webpack4核心模块tapable源码解析](https://www.cnblogs.com/tugenhua0707/p/11317557.html)
-1. [everything-is-a-plugin](https://www.youtube.com/watch?v=H3g0BdyVVxA&list=PLw5h0DiJ-9PDZ0i7cZK7NqrsMRENAR48i&index=3)
+1. [artsy-webpack-tour](https://github.com/thelarkinn/artsy-webpack-tour)
 1. [The Contributors Guide to webpack — Part 2
 ](https://medium.com/webpack/the-contributors-guide-to-webpack-part-2-9fd5e658e08c)
-1. [Webpack - Behind the Scenes](https://medium.com/@imranhsayed/webpack-behind-the-scenes-85333a23c0f6)
+1. [webpack4核心模块tapable源码解析](https://www.cnblogs.com/tugenhua0707/p/11317557.html)
 1. [Creating a Custom webpack Plugin
 ](https://alligator.io/js/create-custom-webpack-plugin/)
 1. 头图来自：[从Webpack源码探究打包流程，萌新也能看懂～](https://juejin.im/post/5c0206626fb9a049bc4c6540)
+1. 插图部分来自：[everything-is-a-plugin](https://www.youtube.com/watch?v=H3g0BdyVVxA&list=PLw5h0DiJ-9PDZ0i7cZK7NqrsMRENAR48i&index=3)
