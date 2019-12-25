@@ -182,7 +182,8 @@ dll plugin用于将第三方模块打包到动态链接库中，二次加载时�
 const webpack = require('webpack');
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const dllPath = path.resolve(__dirname, './dll'); // dll文件存放的目录
+// dll文件存放的目录
+const dllPath = path.resolve(__dirname, './dll');
 
 module.exports = {
     entry: {
@@ -203,6 +204,7 @@ module.exports = {
     ]
 };
 ```
+
 2. 添加并执行dll命令"./node_modules/.bin/webpack --mode production --config webpack.dll.config.js"
 3. yarn run dll生成react.dll.manifest.json及打包react、lodash之后的模块js
 4. 此时dll文件是带有hash的，为了将js注入到页面上,这里我们借助add-asset-html-webpack-plugin。
