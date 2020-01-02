@@ -178,13 +178,13 @@ const Comp = () => {
 
 dll plugin用于将第三方模块打包到动态链接库中，二次加载时参考dll从打包好的一个js中获得模块。
 1. 我们再写一个webpack配置输出dll缓存文件。
+
 ```js
 const webpack = require('webpack');
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 // dll文件存放的目录
 const dllPath = path.resolve(__dirname, './dll');
-
 module.exports = {
     entry: {
         // 把react, lodash放到一个单独的动态链接库
