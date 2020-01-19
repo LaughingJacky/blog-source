@@ -23,22 +23,17 @@ web通信主要是为了实现独立上下文之间共享数据, 满足业务需
 实现方式主要有
 
 1. 父子文档通信(借助window对象[postMessage](https://caniuse.com/#search=postMessage));
-
 2. 借助[localStorage](https://caniuse.com/#search=localStorage)监听;
-
 3. 使用广播隧道([BroadcastChannel](https://caniuse.com/#search=BroadcastChannel));
-
 4. 借助服务器向另一窗口推送信息(WebSocket, SSE)。
 
 ### 父子文档通信
 
 window对象上的postMessage方法包含三个参数:
 
-- message为消息体,它将会被结构化克隆算法序列化
-
-- targetOrigin定义窗口的origin属性, 保证协议、主机地址或端口的完全匹配
-
-- transfer是一个消息上下文, 供目标环境调用
+* message为消息体,它将会被结构化克隆算法序列化
+* targetOrigin定义窗口的origin属性, 保证协议、主机地址或端口的完全匹配
+* transfer是一个消息上下文, 供目标环境调用
 
 parent.html:
 
@@ -58,8 +53,7 @@ window.onmessage = evt => {
 }
 ```
 
-iframe通信与此类似, 获取对象分别为window.frames[0]和window.parent。
-此方案比较普遍, 局限在html为父子关系的页面。
+iframe通信与此类似, 获取对象分别为window.frames\[0]和window.parent。 此方案比较普遍, 局限在html为父子关系的页面。
 
 ### localStorage监听
 
@@ -107,22 +101,18 @@ WebSocket为全双工通道, 可以双向通信; SSE为单向通道, 只能服�
 
 worker的postMessage方法向worker内部作用域发送一个消息, worker本身可以使用DedicatedWorkerGlobalScope.postMessage  方法将信息发送回生成它的线程。worker没有浏览器环境, postMessage方法可有两个参数, 第一个为消息体, 第二个是隧道数组。
 
-调用worker的文档
-
 ```js
-var w1 = new Worker('worker1.js')
-var w2 = new Worker('worker2.js')
-var mc = new MessageChannel()
+// 调用worker
+const w1 = new Worker('worker1.js')
+const w2 = new Worker('worker2.js')
+const mc = new MessageChannel()
 w1.postMessage('port1', [mc.port1])
 w2.postMessage('port2', [mc.port2])
 w2.onmessage = function(e) {
     console.log(`get ${e.data} on html`)
 }
-```
 
-worker1.js
-
-```js
+// worker1.js
 self.onmessage = e => {
     console.log(`get ${e.data} from ${e.currentTarget.origin}`)
     const port = e.ports[0]
@@ -131,11 +121,8 @@ self.onmessage = e => {
         console.log(`get ${evt.data} on ${e.currentTarget.location}`)
     }
 }
-```
 
-worker2.js
-
-```js
+// worker2.js
 self.onmessage = e => {
     console.log(`get ${e.data} from ${e.currentTarget.origin}`)
     const port = e.ports[0]
@@ -146,6 +133,8 @@ self.onmessage = e => {
 }
 
 ```
+
+
 
 可以看到控制台输出
 
