@@ -1,4 +1,4 @@
-const about = '/2018/03/03/About Shawb Wong'
+const about = '/2019/02/01/about-shawb-wong/'
 
 const menuList = [
   {
