@@ -25,6 +25,7 @@ templateKey: blog-post
 
 ![portal](https://2img.net/h/oi968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202020/portal_zps9qpfup5g.png)
 ￼
+
 微前端理念来源于后端微服务实践，其架构大致可分为：
 
 * 单实例：同一时刻，只有一个子应用框架实例展示在页面上，具备完整生命周期
@@ -32,28 +33,28 @@ templateKey: blog-post
 
 下面就借助single-spa框架，展示一种单实例场景下的设计方案。对大部分中后台应用都有参考价值。
 
-我们要实现的页面如图所示，要支持React、Vue、Svelte、Riot、Inferno五种子应用的挂载与切换：
+要实现的页面如图所示，支持React、Vue、Svelte、Riot、Inferno五种子应用的挂载与切换：
 
-![result](https://2img.net/h/oi968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202020/result_zpsa0xrqdml.png)
+![size800](https://2img.net/h/oi968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202020/result_zpsa0xrqdml.png)
 ￼
 
 ### 子应用编写
 
 我们知道，spa项目都需要一个dom挂载点，dom配置如下：
-```js
-    <div id="navbar"></div>
-    <div style="margin-top: 100px;">
-        <div id="react"></div>
-        <div id="vue"></div>
-        <div id="svelte"></div>
-        <div id="inferno"></div>
-        <div id="riot"></div>
-    </div>
+```html
+<div id="navbar"></div>
+<div style="margin-top: 100px;">
+    <div id="react"></div>
+    <div id="vue"></div>
+    <div id="svelte"></div>
+    <div id="inferno"></div>
+    <div id="riot"></div>
+</div>
 ```
 
 接下来用五种UI lib编写基本页面
 
-![folder](https://2img.net/h/oi968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202020/folder_zpsdvxj4cvx.png)
+![size400](https://2img.net/h/oi968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202020/folder_zpsdvxj4cvx.png)
 
 其中, root文件是我们子应用的根入口。日后设计子应用路由也要由此而生;app.js就涉及到了我们的主题single-spa，该文件负责关联single-spa与子框架。
 
@@ -130,7 +131,6 @@ const getBabelConfig = () => ({
 
 const infernoBabelConfig = getBabelConfig();
 infernoBabelConfig.plugins.push('inferno');
-
 
 ...
            {
