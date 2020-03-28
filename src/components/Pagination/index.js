@@ -10,6 +10,7 @@ const PageItem = ({ href, text, curPage }) => <li><Link className={`page ${curPa
 
 const Pagination = ({ pathname, articleNum }) => {
     const pageNum = Math.ceil(articleNum / blogPostCfg.maxPages);
+    console.log(getPageNum(pathname));
     return (<ul className="actions fit pagination">
         <li>
             <span

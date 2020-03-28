@@ -10,7 +10,7 @@ const menuList = [
     text: 'Tags',
   },
   {
-    href: '/blog-list/1',
+    href: '/blog-list',
     text: 'BlogList',
   },
   {
@@ -22,7 +22,7 @@ const menuList = [
 const redirectors = [
   // {
   //   fromPath: '/',
-  //   toPath: '/blogList/1/',
+  //   toPath: '/blogList',
   // },
 ]
 

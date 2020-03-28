@@ -57,7 +57,7 @@ const HomeIndex = ({ data }) => {
                         <header className="major">
                             <h3>文章列表</h3>
                         </header>
-                        <Link to="/blog-list/1" className="link primary" />
+                        <Link to="/blog-list" className="link primary" />
                     </article>
                     <article style={{ backgroundImage: `url(${pic06})` }}>
                         <header className="major">

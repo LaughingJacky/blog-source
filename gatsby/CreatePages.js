@@ -47,9 +47,9 @@ module.exports = ({actions, graphql}) => {
             context: {
                 articleNum: edges.length
             },
+            pageLength: 5,
             pageTemplate: 'src/templates/blog-list.js',
-            pathPrefix: 'blog-list',
-            buildPath: (index, pathPrefix) => `${pathPrefix}/${index}`
+            pathPrefix: 'blog-list'
         });
 
         edges.forEach(({node}, index) => {

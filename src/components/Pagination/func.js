@@ -1,11 +1,10 @@
 import { push } from 'gatsby-link'
 
 const parsePageUrl = (index) => {
-  if (index > 0) {
+  if (index > 1) {
     push(`/blog-list/${index}`)
-  }
-  if (index === 0) {
-    push('/blog-list/1')
+  } else if (index === 1) {
+    push('/blog-list')
   }
   return -1
 }
@@ -25,9 +24,9 @@ const addOnePage = (curPage, maxPages) => {
 }
 
 
-const getPageNum = pathname => +pathname.split('/')[2]
+const getPageNum = pathname => +pathname.split('/')[2] ? +pathname.split('/')[2] : 1
 
-const simplePages = maxPages => new Array(maxPages).fill().map((_, index) => `/blog-list/${index + 1}`)
+const simplePages = maxPages => new Array(maxPages).fill().map((_, index) => index ? `/blog-list/${index + 1}` : '/blog-list')
 
 const complexPages = (curPage, cfg) => {
   let pagesArr = []
