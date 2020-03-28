@@ -45,4 +45,4 @@ templateKey: blog-post
 
 ## 近期关注的方向
 
-React、performance
+性能优化、系统设计
