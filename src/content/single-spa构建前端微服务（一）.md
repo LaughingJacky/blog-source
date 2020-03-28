@@ -170,7 +170,7 @@ infernoBabelConfig.plugins.push('inferno');
 正如描述引言，工程化是一种权衡，技术实现代表可行性分析。只有idea逐步落地，才有对遍地开花的憧憬。
 
 ## 参考资料
-1. 用微前端的方式搭建类单页应用
-2. Microfrontends: the good, the bad, and the ugly
-3. Avoiding monolithic frontends
-4. Recommended Setup
+1. [用微前端的方式搭建类单页应用](https://tech.meituan.com/2018/09/06/fe-tiny-spa.html)
+1. [Microfrontends: the good, the bad, and the ugly](https://zendev.com/2019/06/17/microfrontends-good-bad-ugly.html)
+1. [Avoiding monolithic frontends](https://www.youtube.com/watch?v=pU1gXA0rfwc)
+1. [Recommended Setup](https://single-spa.js.org/docs/recommended-setup/)
