@@ -12,6 +12,13 @@ module.exports = {
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sass',
         'gatsby-plugin-catch-links',
+        'gatsby-plugin-sharp',
+        {
+            resolve: 'gatsby-transformer-sharp',
+            options: {
+                checkSupportedExtensions: false
+            }
+        },
         {
             resolve: 'gatsby-plugin-sitemap',
         },
@@ -27,12 +34,9 @@ module.exports = {
             options: {
                 plugins: [
                     'gatsby-remark-autolink-headers',
-                    {
-                        resolve: `gatsby-remark-prismjs`
-                    },
-                    {
-                        resolve: 'gatsby-remark-external-links',
-                    }
+                    'gatsby-remark-images',
+                    'gatsby-remark-prismjs',
+                    'gatsby-remark-external-links'
                 ],
                 tableOfContents: {
                     heading: null,
