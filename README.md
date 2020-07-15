@@ -6,6 +6,8 @@ https://shawb-wong.vercel.app/
 
 https://laughingjacky.netlify.app/
 
+TODO: optimize LCP.
+
 ## 主题: forty
 
 [HTML5 UP](https://html5up.net/forty)
