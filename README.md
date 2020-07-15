@@ -2,6 +2,9 @@
 Powered by Gatsby.  
 Hosted on Netlify & Now.
 
+https://shawb-wong.vercel.app/
+https://laughingjacky.netlify.app/
+
 ## 主题: forty
 
 ~~TODO: Service Worker support~~
