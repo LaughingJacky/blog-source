@@ -1,13 +1,12 @@
 ---
-id: ''
+id: ""
 slug: /
 title: About Shawb Wong
 date: 2019-02-01T08:21:22.195Z
-description: '嗨, 小伙伴, 你终于发现这个有趣的地方啦!'
+description: 嗨, 小伙伴, 你终于发现这个有趣的地方啦!
 tags:
   - 关于我
-headerImage: >-
-  https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/draw_map2_zpsblhibx2r.jpg
+headerImage: https://2img.net/h/i968.photobucket.com/albums/ae170/laughingjacky/Blog%20Assets%202019/draw_map2_zpsblhibx2r.jpg
 templateKey: blog-post
 ---
 ## 自我介绍
@@ -28,7 +27,7 @@ templateKey: blog-post
 4. 喜欢听歌, 唱的就没那么好
 5. 喜欢打游戏, 体育、武侠、战棋策略偏多, 不喜欢MOBA
 
-## 工作经历
+## 主要工作经历
 
 1. 百度 2018.11-至今\
    高级前端工程师\
@@ -36,13 +35,16 @@ templateKey: blog-post
 2. 学霸君 2017.04-2018.11\
    前端工程师\
    学霸君1对1产品线
-3. 人民日报社 2015.03-2017.03\
+3. 人民日报社 2016.01-2017.03\
    前端工程师\
    国家人文历史杂志社
-4. 上海交通大学 2013.07-2015.01\
+4. 大连华信集团 2015.03-2015.09\
+   软件工程师\
+   医疗事业部
+5. 上海交通大学 2013.07-2015.01\
    通讯软件开发\
    水声工程实验室
 
 ## 近期关注的方向
 
-性能优化、系统设计
+低代码、智能化
