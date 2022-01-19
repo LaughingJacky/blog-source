@@ -4,8 +4,6 @@ Hosted on Netlify & Now.
 
 https://shawb-wong.vercel.app/
 
-https://laughingjacky.netlify.app/
-
 TODO: optimize LCP.
 
 ## 主题: forty
