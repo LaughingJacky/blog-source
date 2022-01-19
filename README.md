@@ -1,6 +1,6 @@
 # 个人博客
 Powered by Gatsby.  
-Hosted on Netlify & Now.
+Hosted on Now.
 
 https://shawb-wong.vercel.app/
 
