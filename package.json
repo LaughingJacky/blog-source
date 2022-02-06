@@ -29,7 +29,7 @@
     "gatsby-source-filesystem": "^2.3.19",
     "gatsby-transformer-remark": "^2.6.32",
     "gitalk": "^1.6.2",
-    "highlight.js": "^9.15.9",
+    "highlight.js": "^11.4.0",
     "lozad": "^1.14.0",
     "md5": "^2.2.1",
     "node-sass": "^4.14.1",
@@ -40,7 +40,8 @@
     "react-helmet": "^6.1.0",
     "remarkable": "^2.0.0",
     "rimraf": "^2.6.2",
-    "smooth-scroll": "^15.0.0"
+    "smooth-scroll": "^15.0.0",
+    "styled-components": "^5.3.3"
   },
   "homepage": "https://github.com/LaughingJacky/gatsby-source",
   "keywords": [
