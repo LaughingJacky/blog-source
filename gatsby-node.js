@@ -7,7 +7,7 @@ exports.createPages = require('./gatsby/CreatePages')
 exports.onCreateWebpackConfig = require('./gatsby/onCreateWebpackConfig')
 
 exports.createSchemaCustomization = ({ actions }) => {
-    actions.createTypes(`
+  actions.createTypes(`
       type SitePage implements Node @dontInfer {
         path: String!
       }

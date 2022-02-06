@@ -1,5 +1,15 @@
 import React, { FC, MouseEventHandler } from "react";
-import { EmoIco, numColorMap } from "./const";
+
+const numColorMap = new Map([
+  [1, 'blue'],
+  [2, 'green'],
+  [-1, 'red']
+]);
+
+enum EmoIco {
+  BOMB = '💣',
+  FLAG = '🚩'
+}
 
 interface IMineBtn {
   cellKey: string;

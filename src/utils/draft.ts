@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { COLS, ROWS } from "./const";
+import { COLS, ROWS } from "../pages/draft/minesweeper";
 
 export function generateMap(seedBombs) {
   let map = new Map();

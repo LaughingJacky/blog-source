@@ -1,13 +1,18 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 
-import { generateMap, generateBombs, toKey, getNeighbors, useForceUpdate } from './utils';
-import { SweepState } from './const';
-import { MineBtn } from './btn';
+import { generateMap, generateBombs, toKey, getNeighbors, useForceUpdate } from '../../../utils/draft';
+import { MineBtn } from '../../../components/MineBtn';
 import './index.scss';
 
+enum SweepState {
+  HAPPY = 'happy',
+  WIN = 'win',
+  LOSE = 'lose'
+}
+
 const SIZE = 48;
-const ROWS = 9;
-const COLS = 9;
+export const ROWS = 9;
+export const COLS = 9;
 
 /**
  * @description 简易扫雷
