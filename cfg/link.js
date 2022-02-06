@@ -14,6 +14,10 @@ const menuList = [
     text: 'BlogList',
   },
   {
+    href: '/draft',
+    text: 'Draft',
+  },
+  {
     href: about,
     text: 'About',
   },

@@ -9,6 +9,8 @@
     "import/core-modules": ["react", "react-dom", "react-router-dom", "config", "react-helmet", "prop-types"]
   },
   "rules": {
+    "react/prop-types": "off",
+    "consistent-return": "off",
     "arrow-body-style": [0, "never"],
     "global-require": 0,
     "no-console": 0,
