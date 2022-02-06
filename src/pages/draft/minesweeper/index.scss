@@ -1,0 +1,50 @@
+.minesweeper-game {
+  background: silver;
+
+  .top-bar {
+    height: 48px;
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .ico-face {
+      margin: auto;
+      cursor: pointer;
+      width: 39px;
+      height: 39px;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      &.happy {
+        background-image: url(./assets/face_unpressed.svg);
+      }
+      &.lose {
+        background-image: url(./assets/face_lose.svg);
+      }
+      &.win {
+        background-image: url(./assets/face_win.svg);
+      }
+    }
+  }
+
+  .cell {
+    float: left;
+    width: 48px;
+    height: 48px;
+    color: black;
+    background-color: '';
+  }
+
+  button {
+    margin: 0;
+    padding: 0;
+    &.closed {
+      background-image: url(./assets/closed.svg);
+      background-size: 100%;
+    }
+  }
+}
